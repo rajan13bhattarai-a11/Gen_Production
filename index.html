@@ -2,647 +2,238 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Ugen Bhattarai | Film Editor • Photographer • Videographer</title>
+  <title>Ugen Bhattarai | Film Editor • Videographer • Photographer</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Sydney-based Film Editor, Photographer, and Videographer. Portfolio of cinematic storytelling and visual work." />
+
   <style>
-    :root{
-      --bg:#0b0d10;
-      --panel: rgba(255,255,255,.06);
-      --panel-2: rgba(255,255,255,.09);
-      --text:#e9eef7;
-      --muted: rgba(233,238,247,.72);
-      --line: rgba(233,238,247,.12);
-      --accent:#f3c77a;
-      --accent2:#8bd3ff;
-      --shadow: 0 24px 60px rgba(0,0,0,.45);
-      --radius: 18px;
-      --radius2: 26px;
-      --max: 1080px;
+    /* ===== RESET & FIXES ===== */
+    * {
+      box-sizing: border-box;
     }
 
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      background:
-        radial-gradient(1000px 600px at 10% 0%, rgba(139,211,255,.18), transparent 60%),
-        radial-gradient(900px 600px at 90% 10%, rgba(243,199,122,.18), transparent 55%),
-        radial-gradient(900px 700px at 50% 120%, rgba(155,120,255,.12), transparent 55%),
-        var(--bg);
-      color: var(--text);
-      line-height:1.65;
+    html, body {
+      margin: 0;
+      padding: 0;
+      max-width: 100%;
+      overflow-x: hidden;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #0b0d10;
+      color: #f1f5f9;
     }
 
-    a{color:inherit; text-decoration:none}
-    a:hover{opacity:.92}
-
-    /* Top nav */
-    .nav{
-      position: sticky; top: 0; z-index: 50;
-      border-bottom: 1px solid var(--line);
-      background: rgba(11,13,16,.6);
-      backdrop-filter: blur(10px);
+    a {
+      color: inherit;
+      text-decoration: none;
     }
-    .nav-inner{
-      max-width: var(--max);
+
+    /* ===== LAYOUT ===== */
+    .container {
+      max-width: 1200px;
       margin: 0 auto;
-      padding: 14px 18px;
-      display:flex; align-items:center; justify-content:space-between;
-      gap: 12px;
+      padding: 40px 20px;
+      width: 100%;
     }
-    .brand{
-      display:flex; align-items:center; gap:10px;
-      font-weight: 700;
-      letter-spacing: .2px;
+
+    /* ===== HERO ===== */
+    .hero {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 32px;
+      align-items: stretch;
     }
-    .logo{
-      width: 34px; height: 34px;
-      border-radius: 12px;
-      background: linear-gradient(135deg, rgba(243,199,122,.95), rgba(139,211,255,.95));
-      box-shadow: 0 8px 24px rgba(0,0,0,.35);
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
     }
-    .nav-links{
-      display:flex; gap: 6px;
+
+    .hero-left {
+      background: radial-gradient(circle at top left, #1e293b, #020617);
+      border-radius: 24px;
+      padding: 48px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      font-size: 14px;
+      margin-bottom: 24px;
+    }
+
+    h1 {
+      font-size: 52px;
+      line-height: 1.1;
+      margin: 0 0 16px;
+    }
+
+    h2 {
+      font-weight: 400;
+      font-size: 18px;
+      color: #cbd5f5;
+      margin-bottom: 24px;
+    }
+
+    p {
+      color: #94a3b8;
+      max-width: 520px;
+      line-height: 1.6;
+    }
+
+    .buttons {
+      margin-top: 32px;
+      display: flex;
+      gap: 14px;
       flex-wrap: wrap;
-      justify-content: center;
-    }
-    .nav-links a{
-      padding: 8px 12px;
-      border-radius: 999px;
-      font-size: 14px;
-      color: var(--muted);
-      border: 1px solid transparent;
-    }
-    .nav-links a:hover{
-      color: var(--text);
-      border-color: var(--line);
-      background: rgba(255,255,255,.04);
-    }
-    .nav-cta{
-      display:flex; gap: 8px; align-items:center;
     }
 
-    /* Buttons */
-    .btn{
-      display:inline-flex; align-items:center; gap:10px;
-      padding: 10px 14px;
+    .btn {
+      padding: 14px 22px;
       border-radius: 999px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,.03);
-      color: var(--text);
-      font-size: 14px;
-      cursor:pointer;
-      transition: transform .12s ease, background .12s ease, border-color .12s ease;
-      user-select:none;
-      white-space: nowrap;
-    }
-    .btn:hover{
-      transform: translateY(-1px);
-      background: rgba(255,255,255,.06);
-      border-color: rgba(233,238,247,.20);
-    }
-    .btn.primary{
-      border-color: transparent;
-      background: linear-gradient(135deg, rgba(243,199,122,.95), rgba(139,211,255,.90));
-      color: #0b0d10;
-      font-weight: 700;
-    }
-    .btn.primary:hover{transform: translateY(-1px) scale(1.01);}
-    .btn svg{width:16px; height:16px;}
-
-    /* Layout helpers */
-    .container{max-width: var(--max); margin: 0 auto; padding: 0 18px;}
-    .section{padding: 72px 0;}
-    .section h2{
-      font-size: 22px; margin: 0 0 10px;
-      letter-spacing:.2px;
-    }
-    .sub{
-      margin:0 0 26px;
-      color: var(--muted);
-      max-width: 72ch;
-    }
-
-    /* Hero */
-    .hero{
-      padding: 70px 0 18px;
-    }
-    .hero-grid{
-      display:grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap: 18px;
-      align-items: start;
-    }
-    @media (max-width: 900px){
-      .hero-grid{grid-template-columns: 1fr; }
-      .nav-links{display:none;}
-    }
-    .hero-card{
-      border: 1px solid var(--line);
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      border-radius: var(--radius2);
-      box-shadow: var(--shadow);
-      overflow:hidden;
-      position:relative;
-    }
-    .hero-card::before{
-      content:"";
-      position:absolute; inset:-2px;
-      background: radial-gradient(600px 280px at 10% 10%, rgba(139,211,255,.18), transparent 60%),
-                  radial-gradient(520px 320px at 90% 20%, rgba(243,199,122,.18), transparent 60%);
-      pointer-events:none;
-      opacity: .9;
-    }
-    .hero-card > *{position:relative}
-    .hero-main{padding: 26px 26px 22px;}
-    .kicker{
-      display:inline-flex; align-items:center; gap: 10px;
-      font-size: 13px;
-      color: var(--muted);
-      border: 1px solid var(--line);
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.03);
-    }
-    .kicker .dot{
-      width:8px; height:8px; border-radius:50%;
-      background: var(--accent2);
-      box-shadow: 0 0 0 6px rgba(139,211,255,.12);
-    }
-    h1{
-      margin: 16px 0 6px;
-      font-size: clamp(34px, 4vw, 52px);
-      line-height: 1.08;
-      letter-spacing: -.6px;
-    }
-    .role{
       font-size: 15px;
-      color: rgba(233,238,247,.86);
-      font-weight: 600;
-      letter-spacing: .2px;
-    }
-    .tagline{
-      margin: 14px 0 0;
-      color: var(--muted);
-      font-size: 16px;
-      max-width: 70ch;
-    }
-    .hero-actions{
-      margin-top: 20px;
-      display:flex; flex-wrap: wrap; gap: 10px;
-    }
-    .chips{
-      margin-top: 18px;
-      display:flex; flex-wrap: wrap; gap: 8px;
-    }
-    .chip{
-      font-size: 12.5px;
-      color: rgba(233,238,247,.78);
-      border: 1px solid var(--line);
-      padding: 7px 10px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.03);
+      font-weight: 500;
+      border: none;
+      cursor: pointer;
     }
 
-    /* Side card */
-    .side{padding: 22px;}
-    .side h3{margin:0 0 10px; font-size: 14px; color: rgba(233,238,247,.9);}
-    .links{display:grid; gap: 10px;}
-    .link{
-      display:flex; align-items:center; justify-content:space-between;
-      gap: 12px;
-      padding: 14px 14px;
-      border-radius: 16px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,.03);
-      transition: transform .12s ease, background .12s ease;
-    }
-    .link:hover{transform: translateY(-1px); background: rgba(255,255,255,.06);}
-    .left{display:flex; align-items:center; gap: 12px;}
-    .ico{
-      width: 36px; height: 36px; border-radius: 14px;
-      border: 1px solid var(--line);
-      display:grid; place-items:center;
-      background: rgba(255,255,255,.03);
-    }
-    .ico svg{width: 18px; height: 18px; opacity: .9;}
-    .label{font-size: 14px; font-weight: 600;}
-    .hint{font-size: 12px; color: var(--muted); margin-top: 1px;}
-    .arrow{opacity: .7}
-    .row{display:flex; flex-direction:column;}
-
-    /* Work cards */
-    .grid{
-      display:grid; gap: 14px;
-      grid-template-columns: repeat(3, 1fr);
-    }
-    @media (max-width: 1000px){ .grid{grid-template-columns: repeat(2, 1fr);} }
-    @media (max-width: 700px){ .grid{grid-template-columns: 1fr;} }
-
-    .card{
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,.03);
-      border-radius: var(--radius2);
-      overflow:hidden;
-      box-shadow: 0 10px 28px rgba(0,0,0,.22);
-      transition: transform .14s ease, border-color .14s ease, background .14s ease;
-    }
-    .card:hover{
-      transform: translateY(-3px);
-      border-color: rgba(233,238,247,.20);
-      background: rgba(255,255,255,.05);
-    }
-    .thumb{
-      height: 150px;
-      background: linear-gradient(135deg, rgba(243,199,122,.22), rgba(139,211,255,.18));
-      border-bottom: 1px solid var(--line);
-      position: relative;
-      overflow:hidden;
-    }
-    .thumb::after{
-      content:"";
-      position:absolute; inset:-40px;
-      background: radial-gradient(340px 200px at 20% 10%, rgba(243,199,122,.32), transparent 60%),
-                  radial-gradient(360px 220px at 70% 40%, rgba(139,211,255,.26), transparent 60%),
-                  radial-gradient(320px 200px at 40% 120%, rgba(155,120,255,.20), transparent 60%);
-      transform: rotate(8deg);
-      opacity:.9;
-    }
-    .thumb svg{position:absolute; right: 14px; bottom: 12px; opacity:.9}
-    .card-body{padding: 18px;}
-    .meta{
-      display:flex; gap: 10px; align-items:center; justify-content:space-between;
-      margin-bottom: 10px;
-    }
-    .badge{
-      font-size: 12px;
-      padding: 6px 10px;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      color: rgba(233,238,247,.8);
-      background: rgba(255,255,255,.03);
-    }
-    .title{margin: 0; font-size: 16px; letter-spacing:.1px;}
-    .desc{margin: 8px 0 12px; color: var(--muted); font-size: 14px;}
-    .tags{display:flex; flex-wrap: wrap; gap: 7px; margin: 0 0 14px;}
-    .tag{
-      font-size: 12px;
-      padding: 6px 10px;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,.03);
-      color: rgba(233,238,247,.78);
-    }
-    .card-actions{display:flex; gap: 10px; flex-wrap: wrap;}
-    .card-actions a{flex: 1 1 auto; text-align:center;}
-
-    /* About & contact panels */
-    .panel{
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,.03);
-      border-radius: var(--radius2);
-      box-shadow: 0 10px 28px rgba(0,0,0,.18);
-      padding: 22px;
-    }
-    .two{
-      display:grid; gap: 14px;
-      grid-template-columns: 1.2fr .8fr;
-    }
-    @media (max-width: 900px){ .two{grid-template-columns:1fr;} }
-
-    .list{margin: 10px 0 0; padding-left: 18px; color: var(--muted); font-size: 14px;}
-    .list li{margin: 6px 0;}
-    .mini{
-      margin-top: 10px;
-      display:flex; flex-wrap:wrap; gap: 8px;
-    }
-    .mini .tag{background: rgba(255,255,255,.04);}
-
-    footer{
-      padding: 40px 0 30px;
-      border-top: 1px solid var(--line);
-      color: rgba(233,238,247,.58);
-      font-size: 13px;
-    }
-    .foot{
-      display:flex; align-items:center; justify-content:space-between; gap: 12px;
-      flex-wrap: wrap;
+    .btn-primary {
+      background: #facc15;
+      color: #000;
     }
 
-    /* simple entrance */
-    .fade{
-      opacity: 0;
-      transform: translateY(8px);
-      animation: in .6s ease forwards;
-    }
-    .fade.d2{animation-delay:.08s}
-    .fade.d3{animation-delay:.16s}
-    .fade.d4{animation-delay:.24s}
-    @keyframes in{
-      to{opacity: 1; transform: translateY(0);}
+    .btn-outline {
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.2);
+      color: #fff;
     }
 
-    /* accessibility */
-    .sr{position:absolute; left:-9999px;}
+    /* ===== RIGHT CARD ===== */
+    .hero-right {
+      background: rgba(255,255,255,0.04);
+      border-radius: 24px;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .link-card {
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.05);
+    }
+
+    /* ===== GALLERY ===== */
+    .gallery {
+      margin-top: 80px;
+    }
+
+    .gallery h3 {
+      font-size: 28px;
+      margin-bottom: 24px;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 100%;
+      max-height: 420px;
+      object-fit: cover;
+      border-radius: 20px;
+      transition: transform 0.4s ease;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.03);
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      margin-top: 80px;
+      padding: 32px 20px;
+      text-align: center;
+      color: #64748b;
+      font-size: 14px;
+    }
   </style>
 </head>
+
 <body>
 
-  <!-- Icons (inline SVG) -->
-  <svg class="sr" aria-hidden="true" focusable="false">
-    <symbol id="i-mail" viewBox="0 0 24 24"><path fill="currentColor" d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm0 4 8 5 8-5V6l-8 5-8-5v2z"/></symbol>
-    <symbol id="i-phone" viewBox="0 0 24 24"><path fill="currentColor" d="M6.6 10.8a15.6 15.6 0 0 0 6.6 6.6l2.2-2.2a1.9 1.9 0 0 1 2-.5c1 .3 2 .5 3.1.6a2 2 0 0 1 1.8 2v3.3a2 2 0 0 1-2 2C10.3 23.6.4 13.7.4 1.9a2 2 0 0 1 2-2H5.7a2 2 0 0 1 2 1.8c.1 1.1.3 2.1.6 3.1a1.9 1.9 0 0 1-.5 2l-2.2 2.0z"/></symbol>
-    <symbol id="i-ext" viewBox="0 0 24 24"><path fill="currentColor" d="M14 3h7v7h-2V6.4l-9.3 9.3-1.4-1.4L17.6 5H14V3z"/><path fill="currentColor" d="M5 5h6v2H7v10h10v-4h2v6H5V5z"/></symbol>
-    <symbol id="i-play" viewBox="0 0 24 24"><path fill="currentColor" d="M10 8.5v7l6-3.5-6-3.5z"/><path fill="currentColor" fill-rule="evenodd" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm0 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16z" clip-rule="evenodd"/></symbol>
-    <symbol id="i-cam" viewBox="0 0 24 24"><path fill="currentColor" d="M9 4 7.6 6H5a3 3 0 0 0-3 3v9a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3V9a3 3 0 0 0-3-3h-2.6L15 4H9zm3 15a5 5 0 1 1 0-10 5 5 0 0 1 0 10zm0-2.2a2.8 2.8 0 1 0 0-5.6 2.8 2.8 0 0 0 0 5.6z"/></symbol>
-    <symbol id="i-film" viewBox="0 0 24 24"><path fill="currentColor" d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm3 2H5v2h2V6zm0 4H5v2h2v-2zm0 4H5v2h2v-2zm0 4H5v2h2v-2zm14-12h-2v2h2V6zm0 4h-2v2h2v-2zm0 4h-2v2h2v-2zm0 4h-2v2h2v-2z"/></symbol>
-  </svg>
+  <div class="container">
 
-  <div class="nav">
-    <div class="nav-inner">
-      <a class="brand" href="#top" aria-label="Go to top">
-        <span class="logo" aria-hidden="true"></span>
-        <span>Ugen Bhattarai</span>
-      </a>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-left">
+        <div class="badge">Sydney, Australia • Available for projects</div>
 
-      <div class="nav-links" aria-label="Site navigation">
-        <a href="#work">Work</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
+        <h1>
+          Film Editor • Photographer • Videographer
+        </h1>
+
+        <h2>
+          Bachelor of Interactive Media — Wentworth Institute of Higher Education
+        </h2>
+
+        <p>
+          I create emotionally-driven films, cinematic videos, and striking photography—
+          focused on visual storytelling, pacing, and mood.
+        </p>
+
+        <div class="buttons">
+          <a class="btn btn-primary" href="https://www.youtube.com/@GenProduction-e8c" target="_blank">
+            Watch Showreel
+          </a>
+          <a class="btn btn-outline" href="https://www.instagram.com/genp.roduction" target="_blank">
+            Instagram
+          </a>
+          <a class="btn btn-outline" href="tel:+61433963533">
+            Call
+          </a>
+        </div>
       </div>
 
-      <div class="nav-cta">
-        <a class="btn" href="mailto:rajan13bhattarai@gmail.com?subject=Portfolio%20enquiry">
-          <svg aria-hidden="true"><use href="#i-mail"></use></svg> Email
-        </a>
-        <a class="btn primary" href="#work">
-          <svg aria-hidden="true"><use href="#i-film"></use></svg> View work
-        </a>
+      <div class="hero-right">
+        <div class="link-card">
+          <strong>YouTube — Gen Production</strong><br>
+          <span style="color:#94a3b8;">Films, edits & videography</span>
+        </div>
+
+        <div class="link-card">
+          <strong>Instagram — genp.roduction</strong><br>
+          <span style="color:#94a3b8;">Photography & behind-the-scenes</span>
+        </div>
+
+        <div class="link-card">
+          <strong>Email</strong><br>
+          <span style="color:#94a3b8;">rajan13bhattarai@gmail.com</span>
+        </div>
       </div>
-    </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="gallery">
+      <h3>Photography</h3>
+
+      <div class="gallery-grid">
+        <img src="images/sydney-cathedral.jpg" alt="Sydney Cathedral">
+        <img src="images/ibis-bird.jpg" alt="Australian Ibis">
+      </div>
+    </section>
+
   </div>
-
-  <div id="top" class="container hero">
-    <div class="hero-grid">
-      <div class="hero-card fade">
-        <div class="hero-main">
-          <div class="kicker">
-            <span class="dot" aria-hidden="true"></span>
-            Sydney, Australia • Available for projects
-          </div>
-
-          <h1>Film Editor • Photographer • Videographer</h1>
-          <div class="role">Bachelor of Interactive Media — Wentworth Institute of Higher Education</div>
-          <p class="tagline">
-            I create emotionally-driven films, cinematic videos, and striking photography—focused on visual storytelling,
-            pacing, and mood.
-          </p>
-
-          <div class="hero-actions">
-            <a class="btn primary" href="https://www.youtube.com/@GenProduction-e8c" target="_blank" rel="noreferrer">
-              <svg aria-hidden="true"><use href="#i-play"></use></svg> Watch showreel
-            </a>
-            <a class="btn" href="https://www.instagram.com/genp.roduction?igsh=YzgxdTJ6Z2ZzeGpy" target="_blank" rel="noreferrer">
-              <svg aria-hidden="true"><use href="#i-cam"></use></svg> View Instagram
-            </a>
-            <a class="btn" href="tel:+61433963533">
-              <svg aria-hidden="true"><use href="#i-phone"></use></svg> Call
-            </a>
-          </div>
-
-          <div class="chips" aria-label="Key strengths">
-            <span class="chip">Cinematic pacing</span>
-            <span class="chip">Colour grading</span>
-            <span class="chip">Sound design</span>
-            <span class="chip">Story-driven edits</span>
-            <span class="chip">Portrait & lifestyle</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="hero-card fade d2">
-        <div class="side">
-          <h3>Quick links</h3>
-          <div class="links">
-            <a class="link" href="https://www.youtube.com/@GenProduction-e8c" target="_blank" rel="noreferrer">
-              <span class="left">
-                <span class="ico"><svg aria-hidden="true"><use href="#i-play"></use></svg></span>
-                <span class="row">
-                  <span class="label">YouTube — Gen Production</span>
-                  <span class="hint">Films, edits, and videography</span>
-                </span>
-              </span>
-              <span class="arrow"><svg aria-hidden="true"><use href="#i-ext"></use></svg></span>
-            </a>
-
-            <a class="link" href="https://www.instagram.com/genp.roduction?igsh=YzgxdTJ6Z2ZzeGpy" target="_blank" rel="noreferrer">
-              <span class="left">
-                <span class="ico"><svg aria-hidden="true"><use href="#i-cam"></use></svg></span>
-                <span class="row">
-                  <span class="label">Instagram — genp.roduction</span>
-                  <span class="hint">Photography & behind-the-scenes</span>
-                </span>
-              </span>
-              <span class="arrow"><svg aria-hidden="true"><use href="#i-ext"></use></svg></span>
-            </a>
-
-            <a class="link" href="mailto:rajan13bhattarai@gmail.com?subject=Portfolio%20enquiry">
-              <span class="left">
-                <span class="ico"><svg aria-hidden="true"><use href="#i-mail"></use></svg></span>
-                <span class="row">
-                  <span class="label">rajan13bhattarai@gmail.com</span>
-                  <span class="hint">Fastest way to reach me</span>
-                </span>
-              </span>
-              <span class="arrow"><svg aria-hidden="true"><use href="#i-ext"></use></svg></span>
-            </a>
-
-            <a class="link" href="tel:+61433963533">
-              <span class="left">
-                <span class="ico"><svg aria-hidden="true"><use href="#i-phone"></use></svg></span>
-                <span class="row">
-                  <span class="label">+61 433 963 533</span>
-                  <span class="hint">Call / WhatsApp</span>
-                </span>
-              </span>
-              <span class="arrow"><svg aria-hidden="true"><use href="#i-ext"></use></svg></span>
-            </a>
-          </div>
-
-          <div style="margin-top:14px; border-top:1px solid var(--line); padding-top:14px; color:var(--muted); font-size:13px;">
-            <strong style="color:rgba(233,238,247,.9);">Tip:</strong>
-            Replace the gradient thumbnails below with your own stills for an instant “wow”.
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <section id="work" class="section">
-    <div class="container">
-      <h2 class="fade d2">Selected work</h2>
-      <p class="sub fade d3">A curated snapshot. Swap in your project thumbnails, titles, and links anytime.</p>
-
-      <div class="grid">
-        <article class="card fade d2">
-          <div class="thumb" aria-hidden="true">
-            <svg width="34" height="34" viewBox="0 0 24 24"><use href="#i-film"></use></svg>
-          </div>
-          <div class="card-body">
-            <div class="meta">
-              <h3 class="title">The Last Cheers (Short Film)</h3>
-              <span class="badge">Film</span>
-            </div>
-            <p class="desc">An emotional short exploring friendship, regret, and closure through present-day scenes and flashbacks.</p>
-            <div class="tags">
-              <span class="tag">Editing</span><span class="tag">Cinematography</span><span class="tag">Sound</span>
-            </div>
-            <div class="card-actions">
-              <a class="btn primary" href="https://www.youtube.com/@GenProduction-e8c" target="_blank" rel="noreferrer">
-                <svg aria-hidden="true"><use href="#i-play"></use></svg> Watch
-              </a>
-              <a class="btn" href="#contact">
-                <svg aria-hidden="true"><use href="#i-mail"></use></svg> Enquire
-              </a>
-            </div>
-          </div>
-        </article>
-
-        <article class="card fade d3">
-          <div class="thumb" aria-hidden="true">
-            <svg width="34" height="34" viewBox="0 0 24 24"><use href="#i-play"></use></svg>
-          </div>
-          <div class="card-body">
-            <div class="meta">
-              <h3 class="title">Videography Projects</h3>
-              <span class="badge">Video</span>
-            </div>
-            <p class="desc">Cinematic videos designed for strong pacing, mood, and clean storytelling across platforms.</p>
-            <div class="tags">
-              <span class="tag">Colour grading</span><span class="tag">Reels</span><span class="tag">YouTube</span>
-            </div>
-            <div class="card-actions">
-              <a class="btn primary" href="https://www.youtube.com/@GenProduction-e8c" target="_blank" rel="noreferrer">
-                <svg aria-hidden="true"><use href="#i-ext"></use></svg> View channel
-              </a>
-              <a class="btn" href="tel:+61433963533">
-                <svg aria-hidden="true"><use href="#i-phone"></use></svg> Call
-              </a>
-            </div>
-          </div>
-        </article>
-
-        <article class="card fade d4">
-          <div class="thumb" aria-hidden="true">
-            <svg width="34" height="34" viewBox="0 0 24 24"><use href="#i-cam"></use></svg>
-          </div>
-          <div class="card-body">
-            <div class="meta">
-              <h3 class="title">Photography</h3>
-              <span class="badge">Photo</span>
-            </div>
-            <p class="desc">Still images focused on light, composition, and atmosphere—portraits, lifestyle, and street.</p>
-            <div class="tags">
-              <span class="tag">Composition</span><span class="tag">Portrait</span><span class="tag">Street</span>
-            </div>
-            <div class="card-actions">
-              <a class="btn primary" href="https://www.instagram.com/genp.roduction?igsh=YzgxdTJ6Z2ZzeGpy" target="_blank" rel="noreferrer">
-                <svg aria-hidden="true"><use href="#i-ext"></use></svg> View Instagram
-              </a>
-              <a class="btn" href="#contact">
-                <svg aria-hidden="true"><use href="#i-mail"></use></svg> Book shoot
-              </a>
-            </div>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section id="about" class="section">
-    <div class="container">
-      <h2 class="fade d2">About</h2>
-      <p class="sub fade d3">Professional and direct — easy for clients to understand what you do.</p>
-
-      <div class="two">
-        <div class="panel fade d2">
-          <h3 style="margin:0 0 10px; font-size:16px;">My focus</h3>
-          <p style="margin:0; color:var(--muted); font-size:14.5px;">
-            I’m a Sydney-based visual storyteller specialising in film editing, videography, and photography.
-            I focus on cinematic rhythm, strong emotions, and clean storytelling — from concept to final delivery.
-          </p>
-          <ul class="list">
-            <li><strong style="color:rgba(233,238,247,.9);">Film editing:</strong> narrative flow, pacing, and sound-first polish.</li>
-            <li><strong style="color:rgba(233,238,247,.9);">Videography:</strong> cinematic visuals for brands and creators.</li>
-            <li><strong style="color:rgba(233,238,247,.9);">Photography:</strong> portraits and lifestyle with mood and clarity.</li>
-          </ul>
-          <div class="mini" aria-label="Specialties">
-            <span class="tag">Premiere Pro</span>
-            <span class="tag">After Effects</span>
-            <span class="tag">Colour grading</span>
-            <span class="tag">Sound design</span>
-            <span class="tag">Lighting</span>
-          </div>
-        </div>
-
-        <div class="panel fade d3">
-          <h3 style="margin:0 0 10px; font-size:16px;">Availability</h3>
-          <p style="margin:0; color:var(--muted); font-size:14.5px;">
-            For best results, share your goal, reference style, and deadline. I’ll reply with a clear plan and timeline.
-          </p>
-          <div style="margin-top:14px; display:grid; gap:10px;">
-            <a class="btn primary" href="mailto:rajan13bhattarai@gmail.com?subject=Portfolio%20enquiry">
-              <svg aria-hidden="true"><use href="#i-mail"></use></svg> Email me
-            </a>
-            <a class="btn" href="tel:+61433963533">
-              <svg aria-hidden="true"><use href="#i-phone"></use></svg> Call / WhatsApp
-            </a>
-            <a class="btn" href="https://www.youtube.com/@GenProduction-e8c" target="_blank" rel="noreferrer">
-              <svg aria-hidden="true"><use href="#i-ext"></use></svg> YouTube portfolio
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="contact" class="section">
-    <div class="container">
-      <h2 class="fade d2">Contact</h2>
-      <p class="sub fade d3">Make it easy to reach you in under 10 seconds.</p>
-
-      <div class="panel fade d2">
-        <div style="display:flex; flex-wrap:wrap; gap:10px;">
-          <a class="btn primary" href="mailto:rajan13bhattarai@gmail.com?subject=Portfolio%20enquiry">
-            <svg aria-hidden="true"><use href="#i-mail"></use></svg> rajan13bhattarai@gmail.com
-          </a>
-          <a class="btn" href="tel:+61433963533">
-            <svg aria-hidden="true"><use href="#i-phone"></use></svg> +61 433 963 533
-          </a>
-          <a class="btn" href="https://www.youtube.com/@GenProduction-e8c" target="_blank" rel="noreferrer">
-            <svg aria-hidden="true"><use href="#i-play"></use></svg> YouTube
-          </a>
-          <a class="btn" href="https://www.instagram.com/genp.roduction?igsh=YzgxdTJ6Z2ZzeGpy" target="_blank" rel="noreferrer">
-            <svg aria-hidden="true"><use href="#i-cam"></use></svg> Instagram
-          </a>
-        </div>
-
-        <div style="margin-top:14px; border-top:1px solid var(--line); padding-top:14px; color:var(--muted); font-size:13px;">
-          <strong style="color:rgba(233,238,247,.9);">What to include in your message:</strong>
-          budget range, deadline, reference links, and the style you want (cinematic / clean / energetic).
-        </div>
-      </div>
-    </div>
-  </section>
 
   <footer>
-    <div class="container foot">
-      <div>© 2025 Ugen Bhattarai · Sydney, Australia</div>
-      <div>Built as a single HTML file — fast and easy to share.</div>
-    </div>
+    © 2025 Ugen Bhattarai · Sydney, Australia
   </footer>
 
 </body>
 </html>
+
