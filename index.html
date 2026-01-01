@@ -7,14 +7,12 @@
   <meta name="description" content="Sydney-based Film Editor, Photographer, and Videographer. Portfolio of cinematic storytelling and visual work." />
 
   <style>
-    /* ===== RESET & CROPPING FIX ===== */
     * { box-sizing: border-box; }
     html, body {
       margin: 0;
       padding: 0;
       width: 100%;
-      max-width: 100%;
-      overflow-x: hidden; /* fixes right side crop */
+      overflow-x: hidden;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background: #0b0d10;
       color: #f1f5f9;
@@ -22,351 +20,130 @@
     }
     img { max-width: 100%; display: block; }
     a { color: inherit; text-decoration: none; }
-    a:focus { outline: 2px solid rgba(250, 204, 21, 0.7); outline-offset: 3px; border-radius: 10px; }
 
     :root{
-      --bg: #0b0d10;
-      --panel: rgba(255,255,255,0.05);
-      --panel2: rgba(255,255,255,0.07);
-      --line: rgba(255,255,255,0.12);
       --muted: #94a3b8;
-      --muted2: #cbd5f5;
-      --accent: #facc15;
+      --line: rgba(255,255,255,0.12);
       --radius: 22px;
       --shadow: 0 18px 48px rgba(0,0,0,.45);
       --max: 1200px;
     }
 
-    /* ===== LAYOUT ===== */
     .container {
       max-width: var(--max);
       margin: 0 auto;
       padding: 36px 18px 70px;
-      width: 100%;
     }
 
-    /* ===== TOP NAV ===== */
+    /* NAV */
     .nav {
       position: sticky;
       top: 0;
-      z-index: 50;
       backdrop-filter: blur(10px);
-      background: rgba(11, 13, 16, 0.72);
+      background: rgba(11, 13, 16, 0.75);
       border-bottom: 1px solid var(--line);
+      z-index: 50;
     }
     .nav-inner {
       max-width: var(--max);
-      margin: 0 auto;
+      margin: auto;
       padding: 12px 18px;
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      gap: 12px;
-    }
-    .brand {
-      display: flex;
       align-items: center;
-      gap: 10px;
-      font-weight: 800;
-      letter-spacing: 0.2px;
     }
-    .logo {
-      width: 34px; height: 34px;
-      border-radius: 12px;
-      background: linear-gradient(135deg, rgba(250,204,21,.95), rgba(147,197,253,.75));
-      box-shadow: 0 12px 30px rgba(0,0,0,.35);
-      flex: 0 0 auto;
-    }
-    .nav-links {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    .nav-links a {
-      font-size: 14px;
-      color: rgba(241,245,249,.75);
-      padding: 8px 12px;
-      border-radius: 999px;
-      border: 1px solid transparent;
-      transition: background .15s ease, border-color .15s ease, color .15s ease;
-    }
-    .nav-links a:hover {
-      background: rgba(255,255,255,0.04);
-      border-color: var(--line);
-      color: #fff;
-    }
+    .brand { font-weight: 800; }
 
-    /* ===== BUTTONS ===== */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      padding: 12px 18px;
-      border-radius: 999px;
-      font-size: 14px;
-      font-weight: 600;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.04);
-      color: #fff;
-      cursor: pointer;
-      transition: transform .12s ease, background .12s ease, border-color .12s ease;
-      white-space: nowrap;
-    }
-    .btn:hover {
-      transform: translateY(-1px);
-      background: rgba(255,255,255,0.07);
-      border-color: rgba(255,255,255,0.18);
-    }
-    .btn-primary {
-      border: none;
-      background: linear-gradient(135deg, rgba(250,204,21,1), rgba(147,197,253,.95));
-      color: #0b0d10;
-      font-weight: 800;
-    }
-
-    /* ===== HERO ===== */
+    /* HERO */
     .hero {
-      margin-top: 18px;
+      margin-top: 24px;
       display: grid;
-      grid-template-columns: 1.35fr 1fr;
+      grid-template-columns: 1.3fr 1fr;
       gap: 18px;
-      align-items: stretch;
-      width: 100%;
     }
-    @media (max-width: 980px) {
-      .hero { grid-template-columns: 1fr; }
-      .nav-links { display: none; }
-    }
+    @media (max-width: 900px) { .hero { grid-template-columns: 1fr; } }
 
     .hero-left, .hero-right {
       border-radius: var(--radius);
       border: 1px solid var(--line);
       box-shadow: var(--shadow);
-      overflow: hidden;
-      min-width: 0; /* fixes grid overflow cropping */
     }
 
     .hero-left {
-      padding: 46px;
-      background:
-        radial-gradient(700px 320px at 10% 10%, rgba(147,197,253,.18), transparent 60%),
-        radial-gradient(700px 320px at 90% 10%, rgba(250,204,21,.14), transparent 60%),
-        linear-gradient(180deg, rgba(30,41,59,.72), rgba(2,6,23,.92));
-    }
-    @media (max-width: 520px) { .hero-left { padding: 28px; } }
-
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 9px 14px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.10);
-      font-size: 13px;
-      color: rgba(241,245,249,.86);
-      margin-bottom: 22px;
-    }
-    .badge-dot {
-      width: 8px; height: 8px; border-radius: 50%;
-      background: rgba(147,197,253,.95);
-      box-shadow: 0 0 0 6px rgba(147,197,253,.12);
+      padding: 42px;
+      background: linear-gradient(180deg, #1e293b, #020617);
     }
 
-    h1 {
-      font-size: clamp(34px, 4.5vw, 54px);
-      line-height: 1.08;
-      margin: 0 0 14px;
-      letter-spacing: -0.6px;
-    }
-    .subtitle {
-      font-weight: 500;
-      font-size: 16px;
-      color: var(--muted2);
-      margin: 0 0 18px;
-    }
-    .tagline {
-      color: var(--muted);
-      max-width: 62ch;
-      margin: 0;
-      font-size: 16px;
-    }
-    .buttons {
-      margin-top: 26px;
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
+    h1 { font-size: 48px; margin: 0 0 14px; }
+    .subtitle { color: #cbd5f5; margin-bottom: 18px; }
+    .tagline { color: var(--muted); max-width: 60ch; }
 
-    .quick-skills {
-      margin-top: 18px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-    .pill {
-      padding: 7px 12px;
+    .buttons { margin-top: 24px; display: flex; gap: 12px; flex-wrap: wrap; }
+
+    .btn {
+      padding: 12px 18px;
       border-radius: 999px;
       border: 1px solid var(--line);
-      background: rgba(255,255,255,0.04);
-      color: rgba(241,245,249,.78);
-      font-size: 12.5px;
-    }
-
-    /* ===== RIGHT CARD ===== */
-    .hero-right {
-      padding: 26px;
-      background: rgba(255,255,255,0.04);
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    .right-title {
-      font-size: 14px;
-      color: rgba(241,245,249,.85);
-      font-weight: 800;
-      letter-spacing: 0.2px;
-      margin: 2px 0 6px;
-    }
-
-    .link-card {
-      padding: 16px 16px;
-      border-radius: 18px;
       background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.10);
-      transition: transform .12s ease, background .12s ease, border-color .12s ease;
+      color: #fff;
+      font-weight: 600;
     }
-    .link-card:hover {
-      transform: translateY(-1px);
-      background: rgba(255,255,255,0.07);
-      border-color: rgba(255,255,255,0.16);
-    }
-    .link-card strong { display: block; }
-    .link-card span { color: var(--muted); font-size: 13px; }
-
-    /* ===== SECTIONS ===== */
-    .section {
-      margin-top: 70px;
-    }
-    .section h3 {
-      font-size: 26px;
-      margin: 0 0 10px;
-      letter-spacing: -0.2px;
-    }
-    .section p.lead {
-      margin: 0 0 24px;
-      color: var(--muted);
-      max-width: 80ch;
+    .btn-primary {
+      background: linear-gradient(135deg, #facc15, #93c5fd);
+      color: #000;
+      border: none;
     }
 
-    /* ===== GALLERY ===== */
+    .hero-right { padding: 26px; }
+
+    /* SECTIONS */
+    .section { margin-top: 80px; }
+    .section h3 { font-size: 28px; margin-bottom: 10px; }
+    .section p.lead { color: var(--muted); max-width: 80ch; }
+
+    /* PORTFOLIO HEADING */
+    .portfolio-heading {
+      margin: 90px 0 40px;
+      text-align: center;
+    }
+    .portfolio-heading a {
+      font-size: clamp(40px, 5vw, 56px);
+      font-weight: 900;
+      letter-spacing: -0.6px;
+      display: inline-block;
+      cursor: pointer;
+    }
+    .portfolio-heading a::after {
+      content: "";
+      display: block;
+      width: 60%;
+      height: 4px;
+      margin: 14px auto 0;
+      background: linear-gradient(90deg, #facc15, #93c5fd);
+      border-radius: 999px;
+    }
+
+    /* GALLERY (HIDDEN INITIALLY) */
+    #gallery { display: none; }
+    #gallery.show { display: block; }
+
     .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 16px;
-      width: 100%;
-    }
-
-    /* responsive cards */
-    .shot { grid-column: span 4; }
-    @media (max-width: 980px) { .shot { grid-column: span 6; } }
-    @media (max-width: 620px) { .shot { grid-column: span 12; } }
-
-    .shot a {
-      display: block;
-      border-radius: 20px;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.10);
-      background: rgba(255,255,255,0.04);
-      box-shadow: 0 10px 28px rgba(0,0,0,.22);
-      transition: transform .18s ease, border-color .18s ease, background .18s ease;
-    }
-    .shot a:hover {
-      transform: translateY(-3px);
-      border-color: rgba(255,255,255,0.18);
-      background: rgba(255,255,255,0.06);
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 18px;
     }
     .shot img {
-      width: 100%;
+      border-radius: 18px;
       height: 320px;
       object-fit: cover;
-      display: block;
-    }
-    @media (max-width: 620px) { .shot img { height: 260px; } }
-
-    .caption {
-      padding: 12px 14px 14px;
-      border-top: 1px solid rgba(255,255,255,0.08);
-    }
-    .caption .title {
-      font-weight: 800;
-      font-size: 14px;
-      margin: 0 0 2px;
-    }
-    .caption .meta {
-      font-size: 12.5px;
-      color: var(--muted);
-      margin: 0;
     }
 
-    /* ===== LIGHTBOX (CSS only w/ :target) ===== */
-    .lightbox {
-      position: fixed;
-      inset: 0;
-      display: none;
-      background: rgba(0,0,0,.82);
-      padding: 24px;
-      z-index: 100;
-    }
-    .lightbox:target { display: grid; place-items: center; }
-    .lightbox figure {
-      margin: 0;
-      width: min(1100px, 96vw);
-      border-radius: 18px;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.12);
-      background: rgba(255,255,255,0.04);
-      box-shadow: 0 22px 70px rgba(0,0,0,.55);
-    }
-    .lightbox img {
-      width: 100%;
-      height: auto;
-      max-height: 80vh;
-      object-fit: contain;
-      background: #0b0d10;
-    }
-    .lightbox figcaption {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-      padding: 12px 14px;
-      color: rgba(241,245,249,.82);
-      font-size: 13px;
-      border-top: 1px solid rgba(255,255,255,0.10);
-    }
-    .close {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 8px 12px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.18);
-      background: rgba(255,255,255,0.06);
-      color: #fff;
-      font-weight: 700;
-    }
-
-    /* ===== FOOTER ===== */
     footer {
-      margin-top: 70px;
-      padding: 28px 18px;
+      margin-top: 80px;
+      padding: 28px;
       text-align: center;
       color: #64748b;
-      font-size: 14px;
-      border-top: 1px solid rgba(255,255,255,0.10);
+      border-top: 1px solid var(--line);
     }
   </style>
 </head>
@@ -376,274 +153,86 @@
   <!-- NAV -->
   <div class="nav">
     <div class="nav-inner">
-      <a class="brand" href="#top">
-        <span class="logo" aria-hidden="true"></span>
-        <span>Ugen Bhattarai</span>
-      </a>
-
-      <div class="nav-links">
-        <a href="#work">Work</a>
-        <a href="#gallery">Photography</a>
-        <a href="#contact">Contact</a>
-      </div>
-
-      <a class="btn btn-primary" href="https://www.youtube.com/@GenProduction-e8c" target="_blank" rel="noreferrer">
-        ▶ Watch Showreel
-      </a>
+      <div class="brand">Ugen Bhattarai</div>
+      <a class="btn btn-primary" href="https://www.youtube.com/@GenProduction-e8c" target="_blank">▶ Showreel</a>
     </div>
   </div>
 
-  <div id="top" class="container">
+  <div class="container">
 
     <!-- HERO -->
-    <section class="hero" id="work">
+    <section class="hero">
       <div class="hero-left">
-        <div class="badge"><span class="badge-dot"></span> Sydney, Australia • Available for projects</div>
-
         <h1>Film Editor • Photographer • Videographer</h1>
-
-        <div class="subtitle">
-          Bachelor of Interactive Media — Wentworth Institute of Higher Education
-        </div>
-
+        <div class="subtitle">Bachelor of Interactive Media — Wentworth Institute</div>
         <p class="tagline">
-          I create emotionally-driven films, cinematic videos, and striking photography—
-          focused on visual storytelling, pacing, and mood.
+          I create emotionally-driven films, cinematic videos, and striking photography focused on visual storytelling, pacing, and mood.
         </p>
 
         <div class="buttons">
-          <a class="btn btn-primary" href="https://www.youtube.com/@GenProduction-e8c" target="_blank" rel="noreferrer">
-            ▶ Watch Showreel
-          </a>
-          <a class="btn" href="https://www.instagram.com/genp.roduction" target="_blank" rel="noreferrer">
-            📸 Instagram
-          </a>
-          <a class="btn" href="tel:+61433963533">
-            📞 Call
-          </a>
-        </div>
-
-        <div class="quick-skills" aria-label="Specialties">
-          <span class="pill">Cinematic pacing</span>
-          <span class="pill">Colour grading</span>
-          <span class="pill">Sound design</span>
-          <span class="pill">Story-first edits</span>
-          <span class="pill">Portrait & lifestyle</span>
+          <a class="btn btn-primary" href="https://www.youtube.com/@GenProduction-e8c">Watch Showreel</a>
+          <a class="btn" href="https://www.instagram.com/genp.roduction">Instagram</a>
         </div>
       </div>
 
       <div class="hero-right">
-        <div class="right-title">Quick links</div>
-
-        <a class="link-card" href="https://www.youtube.com/@GenProduction-e8c" target="_blank" rel="noreferrer">
-          <strong>YouTube — Gen Production</strong>
-          <span>Films, edits & videography</span>
-        </a>
-
-        <a class="link-card" href="https://www.instagram.com/genp.roduction" target="_blank" rel="noreferrer">
-          <strong>Instagram — genp.roduction</strong>
-          <span>Photography & behind-the-scenes</span>
-        </a>
-
-        <a class="link-card" href="mailto:rajan13bhattarai@gmail.com?subject=Portfolio%20enquiry">
-          <strong>Email</strong>
-          <span>rajan13bhattarai@gmail.com</span>
-        </a>
-
-        <a class="link-card" href="tel:+61433963533">
-          <strong>Phone</strong>
-          <span>+61 433 963 533</span>
-        </a>
+        <p><strong>Email:</strong> rajan13bhattarai@gmail.com</p>
+        <p><strong>Phone:</strong> +61 433 963 533</p>
       </div>
     </section>
-<!-- BIO -->
-<section class="section" id="bio">
-  <h3>About Me</h3>
 
-  <p class="lead">
-    I’m a Sydney-based film editor, videographer, and photographer with a Bachelor of Interactive Media from Wentworth Institute of Higher Education.
-  </p>
+    <!-- BIO -->
+    <section class="section">
+      <h3>About Me</h3>
+      <p class="lead">I’m a Sydney-based film editor, videographer, and photographer with a Bachelor of Interactive Media.</p>
+      <p class="lead">My focus is cinematic pacing, emotional storytelling, and visual composition through film and photography.</p>
+      <p class="lead">I enjoy crafting visuals that feel intentional, immersive, and emotionally engaging.</p>
+    </section>
 
-  <p class="lead">
-    My work focuses on cinematic pacing, emotional storytelling, and clean visual composition. I enjoy shaping narratives through rhythm, colour grading, and sound design to create work that feels intentional and engaging.
-  </p>
+    <!-- PORTFOLIO TRIGGER -->
+    <div class="portfolio-heading">
+      <a onclick="openPortfolio()">Portfolio</a>
+    </div>
 
-  <p class="lead">
-    I work across short films, videography projects, and photography, with a strong interest in visual storytelling that connects emotionally with audiences.
-  </p>
-</section>
-
-    <!-- GALLERY -->
+    <!-- PHOTOGRAPHY -->
     <section class="section" id="gallery">
       <h3>Photography</h3>
-      <p class="lead"> Here are some of my work sample. Click any photo to view it larger.</p>
+      <p class="lead">Selected visual work. Click Portfolio above to view.</p>
 
       <div class="gallery-grid">
-        <!-- 1 -->
-        <div class="shot">
-          <a href="#img1">
-            <img src="images/Sydney_Cathedral.jpg" alt="Sydney Cathedral">
-            <div class="caption">
-              <p class="title">Sydney Cathedral</p>
-              <p class="meta">Architecture • Light • Mood</p>
-            </div>
-          </a>
-        </div>
-
-        <!-- 2 -->
-        <div class="shot">
-          <a href="#img2">
-            <img src="images/Sydney_Bird.jpg" alt="Sydney Bird">
-            <div class="caption">
-              <p class="title">Sydney Bird</p>
-              <p class="meta">Nature • Detail • Timing</p>
-            </div>
-          </a>
-        </div>
-
-        <!-- Keep your existing ones -->
-        <div class="shot">
-          <a href="#img3">
-            <img src="images/tree.jpg" alt="A Solid Foundation">
-            <div class="caption">
-              <p class="title">A Solid Foundation</p>
-              <p class="meta">Texture • Calm • Contrast</p>
-            </div>
-          </a>
-        </div>
-
-        <div class="shot">
-          <a href="#img4">
-            <img src="images/Habour_bridge.jpg" alt="An Iconic Architecture">
-            <div class="caption">
-              <p class="title">An Iconic Architecture</p>
-              <p class="meta">Sydney • Lines • Scale</p>
-            </div>
-          </a>
-        </div>
-
-        <div class="shot">
-          <a href="#img5">
-            <img src="images/flower.jpg" alt="Blooming Flowers">
-            <div class="caption">
-              <p class="title">Blooming Flowers</p>
-              <p class="meta">Macro • Colour • Softness</p>
-            </div>
-          </a>
-        </div>
-
-        <div class="shot">
-          <a href="#img6">
-            <img src="images/home.jpg" alt="An Ancient Craft">
-            <div class="caption">
-              <p class="title">An Ancient Craft</p>
-              <p class="meta">Story • Place • Texture</p>
-            </div>
-          </a>
-        </div>
-
-        <div class="shot">
-          <a href="#img7">
-            <img src="images/reflection.jpg" alt="Nature's Portrait">
-            <div class="caption">
-              <p class="title">Nature’s Portrait</p>
-              <p class="meta">Reflection • Mood • Minimal</p>
-            </div>
-          </a>
-        </div>
+        <div class="shot"><img src="images/Sydney_Cathedral.jpg" alt=""></div>
+        <div class="shot"><img src="images/Sydney_Bird.jpg" alt=""></div>
+        <div class="shot"><img src="images/tree.jpg" alt=""></div>
+        <div class="shot"><img src="images/Habour_bridge.jpg" alt=""></div>
+        <div class="shot"><img src="images/flower.jpg" alt=""></div>
+        <div class="shot"><img src="images/home.jpg" alt=""></div>
+        <div class="shot"><img src="images/reflection.jpg" alt=""></div>
       </div>
     </section>
 
-    <!-- ABOUT / CONTACT -->
-    <section class="section" id="contact">
+    <!-- CONTACT -->
+    <section class="section">
       <h3>Contact</h3>
-      <p class="lead">For projects: send your brief + deadline + reference style (cinematic / clean / energetic).</p>
-
+      <p class="lead">For projects, send your brief, deadline, and reference style.</p>
       <div class="buttons">
-        <a class="btn btn-primary" href="mailto:rajan13bhattarai@gmail.com?subject=Portfolio%20enquiry">📧 Email</a>
-        <a class="btn" href="tel:+61433963533">📞 Call</a>
-        <a class="btn" href="https://www.youtube.com/@GenProduction-e8c" target="_blank" rel="noreferrer">▶ YouTube</a>
-        <a class="btn" href="https://www.instagram.com/genp.roduction" target="_blank" rel="noreferrer">📸 Instagram</a>
+        <a class="btn btn-primary" href="mailto:rajan13bhattarai@gmail.com">Email</a>
+        <a class="btn" href="tel:+61433963533">Call</a>
       </div>
     </section>
 
   </div>
 
   <footer>
-    <b>©</b> 2025 Ugen Bhattarai
-    Sydney, Australia
+    © 2025 Ugen Bhattarai · Sydney, Australia
   </footer>
 
-  <!-- LIGHTBOXES -->
-  <div class="lightbox" id="img1">
-    <figure>
-      <img src="images/Sydney_Cathedral.jpg" alt="Sydney Cathedral">
-      <figcaption>
-        <span>Sydney Cathedral</span>
-        <a class="close" href="#gallery">Close ✕</a>
-      </figcaption>
-    </figure>
-  </div>
-
-  <div class="lightbox" id="img2">
-    <figure>
-      <img src="images/Sydney_Bird.jpg" alt="Sydney Bird">
-      <figcaption>
-        <span>Sydney Bird</span>
-        <a class="close" href="#gallery">Close ✕</a>
-      </figcaption>
-    </figure>
-  </div>
-
-  <div class="lightbox" id="img3">
-    <figure>
-      <img src="images/tree.jpg" alt="A Solid Foundation">
-      <figcaption>
-        <span>A Solid Foundation</span>
-        <a class="close" href="#gallery">Close ✕</a>
-      </figcaption>
-    </figure>
-  </div>
-
-  <div class="lightbox" id="img4">
-    <figure>
-      <img src="images/Habour_bridge.jpg" alt="An Iconic Architecture">
-      <figcaption>
-        <span>An Iconic Architecture</span>
-        <a class="close" href="#gallery">Close ✕</a>
-      </figcaption>
-    </figure>
-  </div>
-
-  <div class="lightbox" id="img5">
-    <figure>
-      <img src="images/flower.jpg" alt="Blooming Flowers">
-      <figcaption>
-        <span>Blooming Flowers</span>
-        <a class="close" href="#gallery">Close ✕</a>
-      </figcaption>
-    </figure>
-  </div>
-
-  <div class="lightbox" id="img6">
-    <figure>
-      <img src="images/home.jpg" alt="An Ancient Craft">
-      <figcaption>
-        <span>An Ancient Craft</span>
-        <a class="close" href="#gallery">Close ✕</a>
-      </figcaption>
-    </figure>
-  </div>
-
-  <div class="lightbox" id="img7">
-    <figure>
-      <img src="images/reflection.jpg" alt="Nature's Portrait">
-      <figcaption>
-        <span>Nature’s Portrait</span>
-        <a class="close" href="#gallery">Close ✕</a>
-      </figcaption>
-    </figure>
-  </div>
+  <script>
+    function openPortfolio() {
+      const gallery = document.getElementById("gallery");
+      gallery.classList.add("show");
+      gallery.scrollIntoView({ behavior: "smooth" });
+    }
+  </script>
 
 </body>
 </html>
