@@ -31,7 +31,7 @@
       padding: 28px 22px 80px;
     }
 
-    /* TOP BAR (Gen Production + button) */
+    /* TOP BAR */
     .topbar{
       display:flex;
       align-items:center;
@@ -48,7 +48,7 @@
       opacity: .95;
     }
 
-    /* Yellow pill button like screenshot */
+    /* Yellow pill button */
     .btn{
       display:inline-flex;
       align-items:center;
@@ -61,6 +61,7 @@
       font-weight: 800;
       text-decoration:none;
       box-shadow: 0 10px 28px rgba(0,0,0,.35);
+      transition: transform .15s ease, filter .15s ease;
     }
     .btn:hover{ filter: brightness(1.04); transform: translateY(-1px); }
 
@@ -78,7 +79,7 @@
       line-height: 1.55;
     }
 
-    /* GRID closer to screenshot (3 cols desktop) */
+    /* GRID */
     .gallery-grid{
       display:grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -102,19 +103,20 @@
 
     .thumb{
       position: relative;
-      height: 300px; /* similar to screenshot */
+      height: 300px;
       background: rgba(255,255,255,0.03);
     }
 
-    .shot img{
+    .thumb img{
       width:100%;
       height:100%;
       object-fit: cover;
       display:block;
       filter: contrast(1.02) saturate(1.02);
+      cursor: zoom-in;
     }
 
-    /* little label on top-left of image */
+    /* top-left label */
     .tag{
       position:absolute;
       top: 12px;
@@ -131,6 +133,8 @@
       font-size: 12px;
       font-weight: 700;
       color: #fff;
+      user-select: none;
+      pointer-events: none;
     }
 
     .caption{
@@ -148,6 +152,39 @@
     .caption .meta{
       font-size: 12px;
       color: var(--muted);
+    }
+
+    /* LIGHTBOX */
+    .lightbox{
+      position: fixed;
+      inset: 0;
+      background: rgba(5,7,10,0.92);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      padding: 18px;
+      cursor: zoom-out;
+    }
+
+    .lightbox.active{
+      display: flex;
+    }
+
+    .lightbox img{
+      max-width: 92vw;
+      max-height: 90vh;
+      border-radius: 18px;
+      box-shadow: 0 40px 120px rgba(0,0,0,0.6);
+      animation: zoomIn .25s ease;
+      cursor: default;
+    }
+
+    @keyframes zoomIn{
+      from{ transform: scale(.92); opacity: 0; }
+      to{ transform: scale(1); opacity: 1; }
     }
   </style>
 </head>
@@ -172,7 +209,7 @@
 
       <div class="shot">
         <div class="thumb">
-          <img src="images/Sydney_Cathedral.jpg" alt="Sydney Cathedral">
+          <img class="lightbox-img" src="images/Sydney_Cathedral.jpg" alt="Sydney Cathedral">
           <div class="tag">🌿 Sydney Cathedral</div>
         </div>
         <div class="caption">
@@ -183,7 +220,7 @@
 
       <div class="shot">
         <div class="thumb">
-          <img src="images/Sydney_Bird.jpg" alt="Sydney Bird">
+          <img class="lightbox-img" src="images/Sydney_Bird.jpg" alt="Sydney Bird">
           <div class="tag">🌿 Sydney Bird</div>
         </div>
         <div class="caption">
@@ -194,7 +231,7 @@
 
       <div class="shot">
         <div class="thumb">
-          <img src="images/tree.jpg" alt="A Solid Foundation">
+          <img class="lightbox-img" src="images/tree.jpg" alt="A Solid Foundation">
           <div class="tag">🌿 A Solid Foundation</div>
         </div>
         <div class="caption">
@@ -205,7 +242,7 @@
 
       <div class="shot">
         <div class="thumb">
-          <img src="images/Habour_bridge.jpg" alt="Iconic Architecture">
+          <img class="lightbox-img" src="images/Habour_bridge.jpg" alt="Iconic Architecture">
           <div class="tag">🌿 Sydney Harbour Bridge</div>
         </div>
         <div class="caption">
@@ -216,7 +253,7 @@
 
       <div class="shot">
         <div class="thumb">
-          <img src="images/flower.jpg" alt="Blooming Flowers">
+          <img class="lightbox-img" src="images/flower.jpg" alt="Blooming Flowers">
           <div class="tag">🌿 Blooming Flowers</div>
         </div>
         <div class="caption">
@@ -227,7 +264,7 @@
 
       <div class="shot">
         <div class="thumb">
-          <img src="images/home.jpg" alt="An Ancient Craft">
+          <img class="lightbox-img" src="images/home.jpg" alt="An Ancient Craft">
           <div class="tag">🌿 An Ancient Craft</div>
         </div>
         <div class="caption">
@@ -238,6 +275,40 @@
 
     </div>
   </div>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <img id="lightboxImage" src="" alt="Expanded view">
+  </div>
+
+  <script>
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImage');
+
+    document.querySelectorAll('.lightbox-img').forEach(img => {
+      img.addEventListener('click', () => {
+        lightboxImg.src = img.src;
+        lightbox.classList.add('active');
+        lightbox.setAttribute('aria-hidden', 'false');
+      });
+    });
+
+    // Close on clicking outside image (or anywhere)
+    lightbox.addEventListener('click', (e) => {
+      lightbox.classList.remove('active');
+      lightbox.setAttribute('aria-hidden', 'true');
+      lightboxImg.src = "";
+    });
+
+    // Close on ESC
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        lightbox.classList.remove('active');
+        lightbox.setAttribute('aria-hidden', 'true');
+        lightboxImg.src = "";
+      }
+    });
+  </script>
 </body>
 </html>
 
