@@ -23,6 +23,7 @@
         radial-gradient(900px 420px at 18% 0%, rgba(255,255,255,0.08), transparent 60%),
         radial-gradient(700px 380px at 88% 10%, rgba(255,255,255,0.05), transparent 55%),
         #0b0d10;
+      min-height: 100vh;
     }
 
     .container{
@@ -186,6 +187,22 @@
       from{ transform: scale(.92); opacity: 0; }
       to{ transform: scale(1); opacity: 1; }
     }
+
+    /* FOOTER (the section from your screenshot) */
+    .footer{
+      margin-top: 70px;
+      padding: 34px 0 38px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      text-align: center;
+      color: #8fa3bf;
+      letter-spacing: .2px;
+    }
+    .footer p{
+      margin: 0;
+      max-width: none;
+      color: #8fa3bf;
+      opacity: .9;
+    }
   </style>
 </head>
 
@@ -274,6 +291,12 @@
       </div>
 
     </div>
+
+    <!-- FOOTER SECTION (added) -->
+    <footer class="footer">
+      <p>© 2025 Ugen Bhattarai Sydney, Australia</p>
+    </footer>
+
   </div>
 
   <!-- LIGHTBOX -->
@@ -293,8 +316,8 @@
       });
     });
 
-    // Close on clicking outside image (or anywhere)
-    lightbox.addEventListener('click', (e) => {
+    // Close on click
+    lightbox.addEventListener('click', () => {
       lightbox.classList.remove('active');
       lightbox.setAttribute('aria-hidden', 'true');
       lightboxImg.src = "";
@@ -311,6 +334,3 @@
   </script>
 </body>
 </html>
-
-
-
