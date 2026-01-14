@@ -247,46 +247,92 @@
     .link-card span { color: var(--muted); font-size: 13px; }
 
     /* ===== SECTIONS ===== */
-/* ===== ABOUT LAYOUT ===== */
-.about-grid {
-  display: grid;
-  grid-template-columns: 1.4fr 1fr;
-  gap: 40px;
-  align-items: center;
-}
+    /* ===== ABOUT LAYOUT ===== */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
 
-.about-image {
-  border-radius: 22px;
-  overflow: hidden;
-  border: 1px solid rgba(255,255,255,0.12);
-  box-shadow: 0 18px 48px rgba(0,0,0,.45);
-}
+    .about-image {
+      border-radius: 22px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: 0 18px 48px rgba(0,0,0,.45);
+    }
 
-.about-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+    .about-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
 
-/* Mobile */
-@media (max-width: 900px) {
-  .about-grid {
-    grid-template-columns: 1fr;
-  }
-}
+    /* Mobile */
+    @media (max-width: 900px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+    }
 
     .section {
       margin-top: 70px;
     }
+
+    /* CHANGED: Center the headings (About Us + Our Services) */
     .section h3 {
       font-size: 26px;
       margin: 0 0 10px;
       letter-spacing: -0.2px;
+      text-align: center;
     }
+
     .section p.lead {
       margin: 0 0 24px;
       color: var(--muted);
       max-width: 80ch;
+    }
+
+    /* ===== OUR SERVICES (ADDED) ===== */
+    .services-grid{
+      margin-top: 26px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      width: 100%;
+    }
+    @media (max-width: 980px){
+      .services-grid{ grid-template-columns: 1fr; }
+    }
+    .service-card{
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.04);
+      box-shadow: 0 10px 28px rgba(0,0,0,.22);
+    }
+    .service-card img{
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      display: block;
+    }
+    @media (max-width: 620px){
+      .service-card img{ height: 260px; }
+    }
+    .service-body{
+      padding: 14px 14px 16px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    .service-title{
+      font-weight: 800;
+      font-size: 16px;
+      margin: 0 0 6px;
+    }
+    .service-desc{
+      margin: 0;
+      color: var(--muted);
+      font-size: 13.5px;
     }
 
     /* ===== GALLERY ===== */
@@ -415,9 +461,9 @@
         <a href="#contact">Contact</a>
       </div>
 
-<a class="btn btn-primary" href="portfolio.html">
-  📷 Portfolio
-</a>
+      <a class="btn btn-primary" href="portfolio.html">
+        📷 Portfolio
+      </a>
 
     </div>
   </div>
@@ -432,7 +478,7 @@
         <h1>Film Editing • Photography • Videography</h1>
 
         <div class="subtitle">
-          
+
         </div>
 
         <p class="tagline">
@@ -485,40 +531,78 @@
         </a>
       </div>
     </section>
-<!-- BIO -->
 
-<section class="section" id="bio">
-  <h3>About Us</h3>
+    <!-- BIO -->
+    <section class="section" id="bio">
+      <h3>About Us</h3>
 
-  <div class="about-grid">
-    
-    <!-- TEXT -->
-    <div>
-      <p class="lead">
-       Gen Production is a creative media studio focused on cinematic storytelling and impactful visual content.
-        We specialise in film production, videography, photography, and post-production, crafting visuals that connect emotionally and communicate ideas with clarity and style.
-      </p>
+      <div class="about-grid">
 
-      <p class="lead">
-        Driven by creativity and precision, we work closely with brands, artists, and individuals to bring ideas to life from concept to final cut.
-        Whether it’s a short film, commercial, or digital content, Gen Production is committed to delivering authentic stories with a strong visual identity.
-      </p>
+        <!-- TEXT -->
+        <div>
+          <p class="lead">
+            Gen Production is a creative media studio focused on cinematic storytelling and impactful visual content.
+            We specialise in film production, videography, photography, and post-production, crafting visuals that connect emotionally and communicate ideas with clarity and style.
+          </p>
 
-      <p class="lead">
-        
-      </p>
-    </div>
+          <p class="lead">
+            Driven by creativity and precision, we work closely with brands, artists, and individuals to bring ideas to life from concept to final cut.
+            Whether it’s a short film, commercial, or digital content, Gen Production is committed to delivering authentic stories with a strong visual identity.
+          </p>
 
-    <!-- IMAGE -->
-    <div class="about-image">
-      <img src="images/about-me.jpg" alt="Ugen Bhattarai portrait">
-    </div>
+          <p class="lead">
 
-  </div>
-</section>
+          </p>
+        </div>
 
+        <!-- IMAGE -->
+        <div class="about-image">
+          <img src="images/about-me.jpg" alt="Ugen Bhattarai portrait">
+        </div>
 
-   
+      </div>
+    </section>
+
+    <!-- OUR SERVICES (ADDED JUST UNDER ABOUT US) -->
+    <section class="section" id="services">
+      <h3>Our Services</h3>
+
+      <div class="services-grid">
+        <!-- Card 1 -->
+        <div class="service-card">
+          <img src="images/service-photography.jpg" alt="Professional Photography Services">
+          <div class="service-body">
+            <p class="service-title">Professional Photography Services</p>
+            <p class="service-desc">
+              From captivating product photography to portraits and lifestyle shoots — crafted with a cinematic eye and clean edits.
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="service-card">
+          <img src="images/service-social.jpg" alt="Social Media Campaigns Ongoing Work">
+          <div class="service-body">
+            <p class="service-title">Social Media Campaigns (Ongoing Work)</p>
+            <p class="service-desc">
+              We provide ongoing creation of high-quality content for Instagram, YouTube, and brand platforms to keep your audience engaged.
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="service-card">
+          <img src="images/service-video.jpg" alt="Video Production">
+          <div class="service-body">
+            <p class="service-title">Video Production</p>
+            <p class="service-desc">
+              We produce high-quality videos that engage, inspire, and inform — from concept to final cut with strong storytelling.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ABOUT / CONTACT -->
     <section class="section" id="contact">
       <h3>Contact</h3>
@@ -600,7 +684,6 @@
     </figure>
   </div>
 
- 
-
 </body>
 </html>
+
