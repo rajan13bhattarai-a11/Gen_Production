@@ -199,10 +199,8 @@
       gap: 12px;
       flex-wrap: wrap;
     }
-/* Center contact buttons */
-#contact .buttons {
-  justify-content: center;
-}
+    /* Center contact buttons */
+    #contact .buttons { justify-content: center; }
 
     .quick-skills {
       margin-top: 18px;
@@ -283,16 +281,14 @@
       margin: 0 0 24px;
       color: var(--muted);
       max-width: 80ch;
-
     }
-/* Contact section: make description full width */
-#contact p.lead {
-  max-width: 100%;
-  width: 100%;
-}
-#contact p.lead {
-  text-align: center;
-}
+
+    /* Contact section: make description full width */
+    #contact p.lead {
+      max-width: 100%;
+      width: 100%;
+      text-align: center;
+    }
 
     /* ===== OUR SERVICES ===== */
     .services-grid{
@@ -343,26 +339,23 @@
       font-size: 13.5px;
     }
 
-    /* ===== SERVICES MODAL (slides inside each service) ===== */
-/* ===== MODAL HEADING ON TOP ===== */
-.svc-heading {
-  padding: 16px;
-  text-align: center;
-  border-bottom: 1px solid rgba(255,255,255,0.10);
-}
+    /* ===== SERVICES MODAL ===== */
+    .svc-heading {
+      padding: 16px;
+      text-align: center;
+      border-bottom: 1px solid rgba(255,255,255,0.10);
+    }
+    .svc-heading h4 {
+      margin: 0;
+      font-size: 20px;
+      font-weight: 900;
+      letter-spacing: -0.2px;
+    }
 
-.svc-heading h4 {
-  margin: 0;
-  font-size: 20px;
-  font-weight: 900;
-  letter-spacing: -0.2px;
-}
-
-/* Description stays below image */
-.svc-caption {
-  padding: 14px 16px 16px;
-  border-top: 1px solid rgba(255,255,255,0.10);
-}
+    .svc-caption {
+      padding: 14px 16px 16px;
+      border-top: 1px solid rgba(255,255,255,0.10);
+    }
 
     .svc-modal{
       position: fixed;
@@ -390,6 +383,8 @@
     .svc-media{
       background: #0b0d10;
     }
+
+    /* Image in modal */
     .svc-media img{
       width: 100%;
       height: auto;
@@ -398,15 +393,16 @@
       display: block;
       background: #0b0d10;
     }
-    .svc-caption{
-      padding: 14px 16px 16px;
-      border-top: 1px solid rgba(255,255,255,0.10);
+
+    /* ✅ Video in modal (added) */
+    .svc-media video{
+      width: 100%;
+      height: auto;
+      max-height: 72vh;
+      display: block;
+      background: #0b0d10;
     }
-    .svc-caption h4{
-      margin: 0 0 6px;
-      font-size: 18px;
-      font-weight: 900;
-    }
+
     .svc-caption p{
       margin: 0;
       color: rgba(241,245,249,.78);
@@ -646,20 +642,21 @@
       <button class="svc-arrow svc-prev" id="svcPrev" aria-label="Previous">‹</button>
       <button class="svc-arrow svc-next" id="svcNext" aria-label="Next">›</button>
 
-     <!-- HEADING (ON TOP) -->
-<div class="svc-heading">
-  <h4 id="svcTitle"></h4>
-</div>
+      <!-- HEADING (ON TOP) -->
+      <div class="svc-heading">
+        <h4 id="svcTitle"></h4>
+      </div>
 
-<!-- IMAGE -->
-<div class="svc-media" id="svcSwipeArea">
-  <img id="svcImg" src="" alt="">
-</div>
+      <!-- MEDIA (image or video) -->
+      <div class="svc-media" id="svcSwipeArea">
+        <img id="svcImg" src="" alt="">
+        <video id="svcVideo" controls playsinline style="display:none;"></video>
+      </div>
 
-<!-- DESCRIPTION (BOTTOM) -->
-<div class="svc-caption">
-  <p id="svcDesc"></p>
-</div>
+      <!-- DESCRIPTION (BOTTOM) -->
+      <div class="svc-caption">
+        <p id="svcDesc"></p>
+      </div>
     </div>
   </div>
 
@@ -673,19 +670,20 @@
     const swipeArea = document.getElementById('svcSwipeArea');
 
     const svcImg = document.getElementById('svcImg');
+    const svcVideo = document.getElementById('svcVideo');
     const svcTitle = document.getElementById('svcTitle');
     const svcDesc = document.getElementById('svcDesc');
 
     const serviceCards = Array.from(document.querySelectorAll('.js-service'));
 
-    // ✅ EDIT IMAGE PATHS/TEXT HERE
+    // ✅ EDIT IMAGE/VIDEO PATHS/TEXT HERE
     const SERVICES = {
       photo: {
         name: "Professional Photography Services",
         slides: [
           { heading: "Landscape Photography", img: "images/Ball.jpg", desc: "Cinematic outdoor landscapes with clean tones and strong composition." },
-          { heading: "Street Photography",   img: "images/Cat.jpg",        desc: "Street storytelling — candid moments, details, and highlights." },
-          { heading: "Portrait Photography",  img: "images/appless.jpg",       desc: "Natural portraits with flattering light and professional retouching." }
+          { heading: "Street Photography",   img: "images/Cat.jpg", desc: "Street storytelling — candid moments, details, and highlights." },
+          { heading: "Portrait Photography", img: "images/appless.jpg", desc: "Natural portraits with flattering light and professional retouching." }
         ]
       },
       social: {
@@ -698,8 +696,8 @@
       video: {
         name: "Video Production",
         slides: [
-          { heading: "Commercial / Promo", img: "images/video-commercial.jpg", desc: "High-quality promos with strong storytelling and clean pacing." },
-          { heading: "Events",            img: "images/video-event.jpg",      desc: "Event highlights capturing energy, crowd, and key moments." }
+          { heading: "Commercial / Promo", type: "video", src: "videos/video-commercial.mp4", desc: "High-quality promos with strong storytelling and clean pacing." },
+          { heading: "Events",            type: "video", src: "videos/video-event.mp4",      desc: "Event highlights capturing energy, crowd, and key moments." }
         ]
       }
     };
@@ -707,6 +705,21 @@
     let activeServiceKey = null;
     let slideIndex = 0;
     let lastFocused = null;
+
+    function isVideoSlide(slide) {
+      if (!slide) return false;
+      if (slide.type === "video") return true;
+      if (typeof slide.src === "string" && /\.(mp4|webm|ogg)(\?.*)?$/i.test(slide.src)) return true;
+      return false;
+    }
+
+    function stopVideo() {
+      try {
+        svcVideo.pause();
+        svcVideo.removeAttribute("src");
+        svcVideo.load();
+      } catch (e) {}
+    }
 
     function renderSlide() {
       const service = SERVICES[activeServiceKey];
@@ -716,11 +729,37 @@
       slideIndex = (slideIndex + slides.length) % slides.length;
 
       const slide = slides[slideIndex];
-      svcTitle.textContent = ` ${slide.heading}`;
+
+      // Heading + description
+      svcTitle.textContent = slide.heading;
       svcDesc.textContent = slide.desc;
 
-      svcImg.src = slide.img;
-      svcImg.alt = `${slide.heading}`;
+      // Media switch (image OR video)
+      if (isVideoSlide(slide)) {
+        // Hide image
+        svcImg.style.display = "none";
+        svcImg.src = "";
+        svcImg.alt = "";
+
+        // Show video
+        svcVideo.style.display = "block";
+        if (svcVideo.src !== slide.src) {
+          stopVideo();
+          svcVideo.src = slide.src;
+          svcVideo.load();
+        }
+        // autoplay attempt (browser may block without interaction)
+        svcVideo.play().catch(() => {});
+      } else {
+        // Stop/hide video
+        stopVideo();
+        svcVideo.style.display = "none";
+
+        // Show image
+        svcImg.style.display = "block";
+        svcImg.src = slide.img;
+        svcImg.alt = slide.heading;
+      }
     }
 
     function openModal(serviceKey) {
@@ -740,6 +779,8 @@
       modal.classList.remove('is-open');
       modal.setAttribute('aria-hidden', 'true');
       document.body.style.overflow = '';
+      stopVideo();
+      svcVideo.style.display = "none";
 
       if (lastFocused && typeof lastFocused.focus === 'function') {
         lastFocused.focus();
@@ -794,6 +835,7 @@
 
 </body>
 </html>
+
 
 
 
