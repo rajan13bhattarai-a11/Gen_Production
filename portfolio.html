@@ -76,7 +76,7 @@
       line-height: 1.55;
     }
 
-    /* PHOTOGRAPHY GRID (UNCHANGED) */
+    /* PHOTOGRAPHY GRID */
     .gallery-grid{
       display:grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -108,25 +108,31 @@
       height:100%;
       object-fit: cover;
       cursor: zoom-in;
+      display:block;
     }
 
-    .tag{
-      position:absolute;
-      top: 12px;
-      left: 12px;
-      padding: 8px 10px;
-      border-radius: 999px;
-      background: rgba(10,12,16,0.55);
-      font-size: 12px;
-      font-weight: 700;
-    }
-
+    /* CAPTION under each photo card */
     .caption{
-      padding: 14px 16px;
+      padding: 14px 16px 16px;
       border-top: 1px solid rgba(255,255,255,0.08);
+      background: rgba(10,12,16,0.35);
     }
 
-    /* LIGHTBOX */
+    .caption h3{
+      margin: 0 0 6px;
+      font-size: 20px;
+      font-weight: 900;
+      letter-spacing: .1px;
+      color: #f8fafc;
+    }
+
+    .caption .meta{
+      margin: 0;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    /* LIGHTBOX (UPDATED: title top + description bottom) */
     .lightbox{
       position: fixed;
       inset: 0;
@@ -135,15 +141,72 @@
       align-items: center;
       justify-content: center;
       z-index: 9999;
-      cursor: zoom-out;
+      padding: 22px;
     }
-
     .lightbox.active{ display:flex; }
 
-    .lightbox img{
-      max-width: 90vw;
-      max-height: 90vh;
+    .lightbox-card{
+      width: min(980px, 92vw);
+      max-height: 92vh;
       border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(12,14,18,0.55);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 26px 70px rgba(0,0,0,0.55);
+      cursor: default;
+      display:flex;
+      flex-direction: column;
+    }
+
+    .lightbox-head{
+      padding: 14px 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 12px;
+    }
+
+    .lightbox-title{
+      font-size: 18px;
+      font-weight: 900;
+      margin: 0;
+      color: #f8fafc;
+      letter-spacing: .2px;
+    }
+
+    .lightbox-close{
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.08);
+      color: #f8fafc;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-weight: 800;
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    .lightbox-body{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding: 12px;
+      overflow: auto;
+    }
+
+    .lightbox-body img{
+      max-width: 100%;
+      max-height: 70vh;
+      border-radius: 14px;
+      display:block;
+    }
+
+    .lightbox-foot{
+      padding: 12px 16px 14px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      color: var(--muted);
+      font-size: 14px;
     }
 
     /* VIDEOGRAPHY */
@@ -182,11 +245,6 @@
       border:0;
     }
 
-    .video-caption{
-      padding: 14px 16px;
-      border-top: 1px solid rgba(255,255,255,0.08);
-    }
-
     .footer{
       margin-top:70px;
       padding:18px 0;
@@ -218,14 +276,69 @@
   <h1>Photography</h1>
   <p>A curated selection of visual storytelling and moments.</p>
 
-  <!-- PHOTOGRAPHY (ORIGINAL) -->
+  <!-- PHOTOGRAPHY -->
   <div class="gallery-grid">
-    <div class="shot"><div class="thumb"><img class="lightbox-img" src="images/Sydney_Cathedral.jpg"></div></div>
-    <div class="shot"><div class="thumb"><img class="lightbox-img" src="images/Sydney_Bird.jpg"></div></div>
-    <div class="shot"><div class="thumb"><img class="lightbox-img" src="images/tree.jpg"></div></div>
-    <div class="shot"><div class="thumb"><img class="lightbox-img" src="images/Habour_bridge.jpg"></div></div>
-    <div class="shot"><div class="thumb"><img class="lightbox-img" src="images/flower.jpg"></div></div>
-    <div class="shot"><div class="thumb"><img class="lightbox-img" src="images/home.jpg"></div></div>
+
+    <div class="shot">
+      <div class="thumb">
+        <img class="lightbox-img" src="images/Sydney_Cathedral.jpg" alt="Sydney Cathedral">
+      </div>
+      <div class="caption">
+        <h3>Sydney Cathedral</h3>
+        <p class="meta">Architecture • Light • Mood</p>
+      </div>
+    </div>
+
+    <div class="shot">
+      <div class="thumb">
+        <img class="lightbox-img" src="images/Sydney_Bird.jpg" alt="Sydney Bird">
+      </div>
+      <div class="caption">
+        <h3>Sydney Bird</h3>
+        <p class="meta">Nature • Detail • Timing</p>
+      </div>
+    </div>
+
+    <div class="shot">
+      <div class="thumb">
+        <img class="lightbox-img" src="images/tree.jpg" alt="A Solid Foundation">
+      </div>
+      <div class="caption">
+        <h3>A Solid Foundation</h3>
+        <p class="meta">Texture • Calm • Contrast</p>
+      </div>
+    </div>
+
+    <div class="shot">
+      <div class="thumb">
+        <img class="lightbox-img" src="images/Habour_bridge.jpg" alt="Harbour Bridge">
+      </div>
+      <div class="caption">
+        <h3>Harbour Bridge</h3>
+        <p class="meta">Iconic • Lines • Energy</p>
+      </div>
+    </div>
+
+    <div class="shot">
+      <div class="thumb">
+        <img class="lightbox-img" src="images/flower.jpg" alt="Bloom Study">
+      </div>
+      <div class="caption">
+        <h3>Bloom Study</h3>
+        <p class="meta">Color • Soft Light • Detail</p>
+      </div>
+    </div>
+
+    <div class="shot">
+      <div class="thumb">
+        <img class="lightbox-img" src="images/home.jpg" alt="Home Stillness">
+      </div>
+      <div class="caption">
+        <h3>Home Stillness</h3>
+        <p class="meta">Warmth • Story • Quiet</p>
+      </div>
+    </div>
+
   </div>
 
   <!-- VIDEOGRAPHY -->
@@ -260,26 +373,69 @@
 
 </div>
 
-<div class="lightbox" id="lightbox">
-  <img id="lightboxImage">
+<!-- LIGHTBOX (UPDATED MARKUP) -->
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <div class="lightbox-card" role="dialog" aria-modal="true" aria-label="Photo preview">
+    <div class="lightbox-head">
+      <h3 class="lightbox-title" id="lightboxTitle">Photo title</h3>
+      <button class="lightbox-close" id="lightboxClose" type="button">✕</button>
+    </div>
+
+    <div class="lightbox-body">
+      <img id="lightboxImage" alt="">
+    </div>
+
+    <div class="lightbox-foot" id="lightboxDesc">Photo description</div>
+  </div>
 </div>
 
 <script>
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightboxImage');
+  const lightboxTitle = document.getElementById('lightboxTitle');
+  const lightboxDesc = document.getElementById('lightboxDesc');
+  const lightboxClose = document.getElementById('lightboxClose');
+
+  function openLightboxFromImage(img){
+    const shot = img.closest('.shot');
+    const title = shot?.querySelector('.caption h3')?.textContent?.trim() || img.alt || 'Photo';
+    const desc  = shot?.querySelector('.caption .meta')?.textContent?.trim() || '';
+
+    lightboxImg.src = img.src;
+    lightboxImg.alt = title;
+    lightboxTitle.textContent = title;
+    lightboxDesc.textContent = desc;
+
+    lightbox.classList.add('active');
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox(){
+    lightbox.classList.remove('active');
+    lightbox.setAttribute('aria-hidden', 'true');
+    lightboxImg.src = "";
+    document.body.style.overflow = '';
+  }
 
   document.querySelectorAll('.lightbox-img').forEach(img => {
-    img.onclick = () => {
-      lightboxImg.src = img.src;
-      lightbox.classList.add('active');
-    };
+    img.addEventListener('click', () => openLightboxFromImage(img));
   });
 
-  lightbox.onclick = () => {
-    lightbox.classList.remove('active');
-    lightboxImg.src = "";
-  };
+  // close button
+  lightboxClose.addEventListener('click', closeLightbox);
+
+  // click outside the card closes (but clicking inside doesn't)
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) closeLightbox();
+  });
+
+  // ESC closes
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && lightbox.classList.contains('active')) closeLightbox();
+  });
 </script>
+
 </body>
 </html>
 
