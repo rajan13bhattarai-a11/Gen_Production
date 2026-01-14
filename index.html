@@ -14,7 +14,7 @@
       padding: 0;
       width: 100%;
       max-width: 100%;
-      overflow-x: hidden; /* fixes right side crop */
+      overflow-x: hidden;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background: #0b0d10;
       color: #f1f5f9;
@@ -145,7 +145,7 @@
       border: 1px solid var(--line);
       box-shadow: var(--shadow);
       overflow: hidden;
-      min-width: 0; /* fixes grid overflow cropping */
+      min-width: 0;
     }
 
     .hero-left {
@@ -246,7 +246,6 @@
     .link-card strong { display: block; }
     .link-card span { color: var(--muted); font-size: 13px; }
 
-    /* ===== SECTIONS ===== */
     /* ===== ABOUT LAYOUT ===== */
     .about-grid {
       display: grid;
@@ -254,46 +253,35 @@
       gap: 40px;
       align-items: center;
     }
-
     .about-image {
       border-radius: 22px;
       overflow: hidden;
       border: 1px solid rgba(255,255,255,0.12);
       box-shadow: 0 18px 48px rgba(0,0,0,.45);
     }
-
     .about-image img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
-
-    /* Mobile */
     @media (max-width: 900px) {
-      .about-grid {
-        grid-template-columns: 1fr;
-      }
+      .about-grid { grid-template-columns: 1fr; }
     }
 
-    .section {
-      margin-top: 70px;
-    }
-
-    /* CHANGED: Center the headings (About Us + Our Services) */
+    .section { margin-top: 70px; }
     .section h3 {
       font-size: 26px;
       margin: 0 0 10px;
       letter-spacing: -0.2px;
       text-align: center;
     }
-
     .section p.lead {
       margin: 0 0 24px;
       color: var(--muted);
       max-width: 80ch;
     }
 
-    /* ===== OUR SERVICES (ADDED) ===== */
+    /* ===== OUR SERVICES ===== */
     .services-grid{
       margin-top: 26px;
       display: grid;
@@ -310,6 +298,13 @@
       border: 1px solid rgba(255,255,255,0.10);
       background: rgba(255,255,255,0.04);
       box-shadow: 0 10px 28px rgba(0,0,0,.22);
+      cursor: pointer;
+      transition: transform .18s ease, border-color .18s ease, background .18s ease;
+    }
+    .service-card:hover{
+      transform: translateY(-3px);
+      border-color: rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.06);
     }
     .service-card img{
       width: 100%;
@@ -335,102 +330,115 @@
       font-size: 13.5px;
     }
 
-    /* ===== GALLERY ===== */
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 16px;
-      width: 100%;
-    }
+    /* ===== SERVICES MODAL (slides inside each service) ===== */
+/* ===== MODAL HEADING ON TOP ===== */
+.svc-heading {
+  padding: 16px;
+  text-align: center;
+  border-bottom: 1px solid rgba(255,255,255,0.10);
+}
 
-    /* responsive cards */
-    .shot { grid-column: span 4; }
-    @media (max-width: 980px) { .shot { grid-column: span 6; } }
-    @media (max-width: 620px) { .shot { grid-column: span 12; } }
+.svc-heading h4 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 900;
+  letter-spacing: -0.2px;
+}
 
-    .shot a {
-      display: block;
-      border-radius: 20px;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.10);
-      background: rgba(255,255,255,0.04);
-      box-shadow: 0 10px 28px rgba(0,0,0,.22);
-      transition: transform .18s ease, border-color .18s ease, background .18s ease;
-    }
-    .shot a:hover {
-      transform: translateY(-3px);
-      border-color: rgba(255,255,255,0.18);
-      background: rgba(255,255,255,0.06);
-    }
-    .shot img {
-      width: 100%;
-      height: 320px;
-      object-fit: cover;
-      display: block;
-    }
-    @media (max-width: 620px) { .shot img { height: 260px; } }
+/* Description stays below image */
+.svc-caption {
+  padding: 14px 16px 16px;
+  border-top: 1px solid rgba(255,255,255,0.10);
+}
 
-    .caption {
-      padding: 12px 14px 14px;
-      border-top: 1px solid rgba(255,255,255,0.08);
-    }
-    .caption .title {
-      font-weight: 800;
-      font-size: 14px;
-      margin: 0 0 2px;
-    }
-    .caption .meta {
-      font-size: 12.5px;
-      color: var(--muted);
-      margin: 0;
-    }
-
-    /* ===== LIGHTBOX (CSS only w/ :target) ===== */
-    .lightbox {
+    .svc-modal{
       position: fixed;
       inset: 0;
       display: none;
-      background: rgba(0,0,0,.82);
-      padding: 24px;
-      z-index: 100;
+      z-index: 999;
     }
-    .lightbox:target { display: grid; place-items: center; }
-    .lightbox figure {
-      margin: 0;
+    .svc-modal.is-open{ display: block; }
+
+    .svc-backdrop{
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,.82);
+    }
+    .svc-dialog{
+      position: relative;
       width: min(1100px, 96vw);
+      margin: 6vh auto;
       border-radius: 18px;
       overflow: hidden;
       border: 1px solid rgba(255,255,255,0.12);
       background: rgba(255,255,255,0.04);
       box-shadow: 0 22px 70px rgba(0,0,0,.55);
     }
-    .lightbox img {
-      width: 100%;
-      height: auto;
-      max-height: 80vh;
-      object-fit: contain;
+    .svc-media{
       background: #0b0d10;
     }
-    .lightbox figcaption {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-      padding: 12px 14px;
-      color: rgba(241,245,249,.82);
-      font-size: 13px;
+    .svc-media img{
+      width: 100%;
+      height: auto;
+      max-height: 72vh;
+      object-fit: contain;
+      display: block;
+      background: #0b0d10;
+    }
+    .svc-caption{
+      padding: 14px 16px 16px;
       border-top: 1px solid rgba(255,255,255,0.10);
     }
-    .close {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 8px 12px;
+    .svc-caption h4{
+      margin: 0 0 6px;
+      font-size: 18px;
+      font-weight: 900;
+    }
+    .svc-caption p{
+      margin: 0;
+      color: rgba(241,245,249,.78);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .svc-close{
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 44px;
+      height: 44px;
       border-radius: 999px;
       border: 1px solid rgba(255,255,255,0.18);
       background: rgba(255,255,255,0.06);
       color: #fff;
-      font-weight: 700;
+      font-weight: 900;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+    }
+
+    .svc-arrow{
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 46px;
+      height: 46px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.06);
+      color: #fff;
+      font-weight: 900;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      user-select: none;
+    }
+    .svc-prev{ left: 10px; }
+    .svc-next{ right: 10px; }
+
+    @media (max-width: 620px){
+      .svc-dialog{ margin: 4vh auto; }
+      .svc-arrow{ width: 44px; height: 44px; }
     }
 
     /* ===== FOOTER ===== */
@@ -464,7 +472,6 @@
       <a class="btn btn-primary" href="portfolio.html">
         📷 Portfolio
       </a>
-
     </div>
   </div>
 
@@ -477,9 +484,7 @@
 
         <h1>Film Editing • Photography • Videography</h1>
 
-        <div class="subtitle">
-
-        </div>
+        <div class="subtitle"></div>
 
         <p class="tagline">
           Creating emotionally-driven films, cinematic videos, and striking photography
@@ -537,8 +542,6 @@
       <h3>About Us</h3>
 
       <div class="about-grid">
-
-        <!-- TEXT -->
         <div>
           <p class="lead">
             Gen Production is a creative media studio focused on cinematic storytelling and impactful visual content.
@@ -550,27 +553,24 @@
             Whether it’s a short film, commercial, or digital content, Gen Production is committed to delivering authentic stories with a strong visual identity.
           </p>
 
-          <p class="lead">
-
-          </p>
+          <p class="lead"></p>
         </div>
 
-        <!-- IMAGE -->
         <div class="about-image">
           <img src="images/about-me.jpg" alt="Ugen Bhattarai portrait">
         </div>
-
       </div>
     </section>
 
-    <!-- OUR SERVICES (ADDED JUST UNDER ABOUT US) -->
+    <!-- OUR SERVICES -->
     <section class="section" id="services">
       <h3>Our Services</h3>
 
       <div class="services-grid">
         <!-- Card 1 -->
-        <div class="service-card">
-          <img src="images/Service-photo.jpg" alt="Professional Photography Services">
+        <div class="service-card js-service" data-service="photo"
+             role="button" tabindex="0" aria-label="Open Professional Photography Services">
+          <img src="images/Service-photo.jpg" alt="Professional Photography Services" loading="lazy">
           <div class="service-body">
             <p class="service-title">Professional Photography Services</p>
             <p class="service-desc">
@@ -580,8 +580,9 @@
         </div>
 
         <!-- Card 2 -->
-        <div class="service-card">
-          <img src="images/service-social.jpg" alt="Social Media Campaigns">
+        <div class="service-card js-service" data-service="social"
+             role="button" tabindex="0" aria-label="Open Social Media Campaigns">
+          <img src="images/service-social.jpg" alt="Social Media Campaigns" loading="lazy">
           <div class="service-body">
             <p class="service-title">Social Media Campaigns</p>
             <p class="service-desc">
@@ -591,8 +592,9 @@
         </div>
 
         <!-- Card 3 -->
-        <div class="service-card">
-          <img src="images/service-video.jpg" alt="Video Production">
+        <div class="service-card js-service" data-service="video"
+             role="button" tabindex="0" aria-label="Open Video Production">
+          <img src="images/service-video.jpg" alt="Video Production" loading="lazy">
           <div class="service-body">
             <p class="service-title">Video Production</p>
             <p class="service-desc">
@@ -603,7 +605,7 @@
       </div>
     </section>
 
-    <!-- ABOUT / CONTACT -->
+    <!-- CONTACT -->
     <section class="section" id="contact">
       <h3>Contact</h3>
       <p class="lead">For projects: send your brief + deadline + reference style (cinematic / clean / energetic).</p>
@@ -623,67 +625,162 @@
     Sydney, Australia
   </footer>
 
-  <!-- LIGHTBOXES -->
-  <div class="lightbox" id="img1">
-    <figure>
-      <img src="images/Sydney_Cathedral.jpg" alt="Sydney Cathedral">
-      <figcaption>
-        <span>Sydney Cathedral</span>
-        <a class="close" href="#gallery">Close ✕</a>
-      </figcaption>
-    </figure>
+  <!-- SERVICES MODAL -->
+  <div class="svc-modal" id="svcModal" aria-hidden="true">
+    <div class="svc-backdrop" id="svcBackdrop"></div>
+
+    <div class="svc-dialog" role="dialog" aria-modal="true" aria-label="Service details">
+      <button class="svc-close" id="svcClose" aria-label="Close">✕</button>
+      <button class="svc-arrow svc-prev" id="svcPrev" aria-label="Previous">‹</button>
+      <button class="svc-arrow svc-next" id="svcNext" aria-label="Next">›</button>
+
+     <!-- HEADING (ON TOP) -->
+<div class="svc-heading">
+  <h4 id="svcTitle"></h4>
+</div>
+
+<!-- IMAGE -->
+<div class="svc-media" id="svcSwipeArea">
+  <img id="svcImg" src="" alt="">
+</div>
+
+<!-- DESCRIPTION (BOTTOM) -->
+<div class="svc-caption">
+  <p id="svcDesc"></p>
+</div>
+    </div>
   </div>
 
-  <div class="lightbox" id="img2">
-    <figure>
-      <img src="images/Sydney_Bird.jpg" alt="Sydney Bird">
-      <figcaption>
-        <span>Sydney Bird</span>
-        <a class="close" href="#gallery">Close ✕</a>
-      </figcaption>
-    </figure>
-  </div>
+  <script>
+    // ===== Modal shows slides inside each service =====
+    const modal = document.getElementById('svcModal');
+    const backdrop = document.getElementById('svcBackdrop');
+    const btnClose = document.getElementById('svcClose');
+    const btnPrev = document.getElementById('svcPrev');
+    const btnNext = document.getElementById('svcNext');
+    const swipeArea = document.getElementById('svcSwipeArea');
 
-  <div class="lightbox" id="img3">
-    <figure>
-      <img src="images/tree.jpg" alt="A Solid Foundation">
-      <figcaption>
-        <span>A Solid Foundation</span>
-        <a class="close" href="#gallery">Close ✕</a>
-      </figcaption>
-    </figure>
-  </div>
+    const svcImg = document.getElementById('svcImg');
+    const svcTitle = document.getElementById('svcTitle');
+    const svcDesc = document.getElementById('svcDesc');
 
-  <div class="lightbox" id="img4">
-    <figure>
-      <img src="images/Habour_bridge.jpg" alt="An Iconic Architecture">
-      <figcaption>
-        <span>An Iconic Architecture</span>
-        <a class="close" href="#gallery">Close ✕</a>
-      </figcaption>
-    </figure>
-  </div>
+    const serviceCards = Array.from(document.querySelectorAll('.js-service'));
 
-  <div class="lightbox" id="img5">
-    <figure>
-      <img src="images/flower.jpg" alt="Blooming Flowers">
-      <figcaption>
-        <span>Blooming Flowers</span>
-        <a class="close" href="#gallery">Close ✕</a>
-      </figcaption>
-    </figure>
-  </div>
+    // ✅ EDIT IMAGE PATHS/TEXT HERE
+    const SERVICES = {
+      photo: {
+        name: "Professional Photography Services",
+        slides: [
+          { heading: "Landscape", img: "images/Photo.jpg", desc: "Cinematic outdoor landscapes with clean tones and strong composition." },
+          { heading: "Wedding",   img: "images/DSC02353.jpg",        desc: "Emotional wedding storytelling — candid moments, details, and highlights." },
+          { heading: "Portrait",  img: "images/DSC02352.jpg",       desc: "Natural portraits with flattering light and professional retouching." }
+        ]
+      },
+      social: {
+        name: "Social Media Campaigns",
+        slides: [
+          { heading: "Reels & Shorts", img: "images/apple.jpg", desc: "Fast edits optimised for Instagram Reels, TikTok & YouTube Shorts." },
+          { heading: "Brand Content",  img: "images/social-brand.jpg", desc: "Consistent brand look with an ongoing content pipeline." }
+        ]
+      },
+      video: {
+        name: "Video Production",
+        slides: [
+          { heading: "Commercial / Promo", img: "images/video-commercial.jpg", desc: "High-quality promos with strong storytelling and clean pacing." },
+          { heading: "Events",            img: "images/video-event.jpg",      desc: "Event highlights capturing energy, crowd, and key moments." }
+        ]
+      }
+    };
 
-  <div class="lightbox" id="img6">
-    <figure>
-      <img src="images/home.jpg" alt="An Ancient Craft">
-      <figcaption>
-        <span>An Ancient Craft</span>
-        <a class="close" href="#gallery">Close ✕</a>
-      </figcaption>
-    </figure>
-  </div>
+    let activeServiceKey = null;
+    let slideIndex = 0;
+    let lastFocused = null;
+
+    function renderSlide() {
+      const service = SERVICES[activeServiceKey];
+      if (!service || !service.slides || !service.slides.length) return;
+
+      const slides = service.slides;
+      slideIndex = (slideIndex + slides.length) % slides.length;
+
+      const slide = slides[slideIndex];
+      svcTitle.textContent = `${service.name} — ${slide.heading}`;
+      svcDesc.textContent = slide.desc;
+
+      svcImg.src = slide.img;
+      svcImg.alt = `${service.name} - ${slide.heading}`;
+    }
+
+    function openModal(serviceKey) {
+      activeServiceKey = serviceKey;
+      slideIndex = 0;
+      lastFocused = document.activeElement;
+
+      renderSlide();
+
+      modal.classList.add('is-open');
+      modal.setAttribute('aria-hidden', 'false');
+      btnClose.focus();
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      modal.classList.remove('is-open');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+
+      if (lastFocused && typeof lastFocused.focus === 'function') {
+        lastFocused.focus();
+      }
+    }
+
+    function prevSlide() { slideIndex -= 1; renderSlide(); }
+    function nextSlide() { slideIndex += 1; renderSlide(); }
+
+    // Open modal
+    serviceCards.forEach((card) => {
+      const key = card.dataset.service;
+      card.addEventListener('click', () => openModal(key));
+      card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openModal(key);
+        }
+      });
+    });
+
+    // Buttons/backdrop
+    btnClose.addEventListener('click', closeModal);
+    backdrop.addEventListener('click', closeModal);
+    btnPrev.addEventListener('click', prevSlide);
+    btnNext.addEventListener('click', nextSlide);
+
+    // Keyboard
+    document.addEventListener('keydown', (e) => {
+      if (!modal.classList.contains('is-open')) return;
+      if (e.key === 'Escape') closeModal();
+      if (e.key === 'ArrowLeft') prevSlide();
+      if (e.key === 'ArrowRight') nextSlide();
+    });
+
+    // Swipe
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    swipeArea.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    swipeArea.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      const diff = touchEndX - touchStartX;
+      if (Math.abs(diff) < 50) return;
+      if (diff > 0) prevSlide();
+      else nextSlide();
+    }, { passive: true });
+  </script>
 
 </body>
 </html>
+
 
