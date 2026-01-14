@@ -716,11 +716,11 @@
       slideIndex = (slideIndex + slides.length) % slides.length;
 
       const slide = slides[slideIndex];
-      svcTitle.textContent = `${service.name} — ${slide.heading}`;
+      svcTitle.textContent = ` ${slide.heading}`;
       svcDesc.textContent = slide.desc;
 
       svcImg.src = slide.img;
-      svcImg.alt = `${service.name} - ${slide.heading}`;
+      svcImg.alt = `${slide.heading}`;
     }
 
     function openModal(serviceKey) {
