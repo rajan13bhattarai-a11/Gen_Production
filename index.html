@@ -444,6 +444,22 @@
     }
     .svc-prev{ left: 10px; }
     .svc-next{ right: 10px; }
+    /* ===== FIX: keep arrows above video so clicks work ===== */
+.svc-dialog { position: relative; }
+
+.svc-arrow{
+  z-index: 50;          /* higher than the video */
+  pointer-events: auto; /* make sure it's clickable */
+}
+
+/* keep video below arrows */
+.svc-media { position: relative; z-index: 1; }
+.svc-media video,
+.svc-media img{
+  position: relative;
+  z-index: 1;
+}
+
 
     @media (max-width: 620px){
       .svc-dialog{ margin: 4vh auto; }
