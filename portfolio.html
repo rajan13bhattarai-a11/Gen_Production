@@ -29,24 +29,70 @@
     .container{
       max-width: 1220px;
       margin: 0 auto;
-      padding: 28px 22px 80px;
+      padding: 24px 22px 80px;
     }
 
-    /* TOP BAR */
-    .topbar{
+    /* =========================
+       NAVBAR (top)
+    ========================== */
+    .nav{
       display:flex;
       align-items:center;
       justify-content:space-between;
-      gap:16px;
+      gap: 16px;
+      padding: 14px 6px 22px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
       margin-bottom: 26px;
     }
 
     .brand{
-      font-weight: 700;
+      display:flex;
+      align-items:center;
+      gap: 12px;
+      font-weight: 800;
       letter-spacing: .2px;
-      font-size: 14px;
       color: #e5e7eb;
-      opacity: .95;
+      opacity: .96;
+      white-space: nowrap;
+    }
+
+    .brand-dot{
+      width: 28px;
+      height: 28px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, rgba(250,204,21,0.85), rgba(148,163,184,0.45));
+      box-shadow: 0 14px 40px rgba(0,0,0,0.35);
+    }
+
+    .nav-mid{
+      display:flex;
+      align-items:center;
+      gap: 22px;
+      flex-wrap: wrap;
+      justify-content:center;
+    }
+
+    .nav-mid a{
+      color: rgba(226,232,240,0.78);
+      text-decoration:none;
+      font-weight: 650;
+      font-size: 14px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      transition: .18s ease;
+    }
+    .nav-mid a:hover{
+      color: #f8fafc;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.10);
+    }
+
+    .nav-actions{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content:flex-end;
     }
 
     .btn{
@@ -58,25 +104,236 @@
       border: 1px solid rgba(255,255,255,0.18);
       background: linear-gradient(90deg, #facc15, #f59e0b);
       color: #0b0d10;
-      font-weight: 800;
+      font-weight: 900;
       text-decoration:none;
       box-shadow: 0 10px 28px rgba(0,0,0,.35);
+      white-space: nowrap;
     }
 
-    h1{
-      font-size: clamp(44px, 4.2vw, 62px);
+    .btn-ghost{
+      display:inline-flex;
+      align-items:center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.16);
+      background: rgba(255,255,255,0.06);
+      color: #e2e8f0;
+      font-weight: 800;
+      text-decoration:none;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 920px){
+      .nav{ gap: 12px; }
+      .nav-mid{ display:none; } /* keep it clean on small screens */
+    }
+
+    /* =========================
+       HERO (left card + quick links)
+    ========================== */
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+      margin-top: 22px;
+      margin-bottom: 36px;
+    }
+
+    @media (max-width: 980px){
+      .hero-grid{ grid-template-columns: 1fr; }
+    }
+
+    .card{
+      border-radius: 26px;
+      overflow:hidden;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.04);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.35);
+      position: relative;
+    }
+
+    /* left hero card background glow */
+    .hero-card::before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background:
+        radial-gradient(900px 480px at 18% 12%, rgba(96,165,250,0.32), transparent 60%),
+        radial-gradient(720px 420px at 70% 10%, rgba(250,204,21,0.22), transparent 55%),
+        radial-gradient(900px 520px at 50% 110%, rgba(99,102,241,0.18), transparent 55%);
+      pointer-events:none;
+      filter: blur(0px);
+      opacity: .95;
+    }
+
+    .hero-inner{
+      position: relative;
+      padding: 34px 34px 28px;
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(15,18,26,0.42);
+      color: rgba(226,232,240,0.90);
+      font-weight: 700;
+      font-size: 14px;
+      backdrop-filter: blur(10px);
+      margin-bottom: 18px;
+    }
+
+    .pill .dot{
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(147,197,253,0.85);
+      box-shadow: 0 0 0 6px rgba(147,197,253,0.12);
+    }
+
+    .hero-title{
       margin: 0 0 12px;
-      font-weight: 900;
+      font-weight: 950;
+      letter-spacing: -0.5px;
+      font-size: clamp(42px, 4.6vw, 64px);
+      line-height: 1.02;
     }
 
-    p{
+    .hero-desc{
+      margin: 0 0 22px;
+      max-width: 720px;
+      color: rgba(148,163,184,0.95);
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    .hero-actions{
+      display:flex;
+      align-items:center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 22px;
+    }
+
+    .btn-soft{
+      display:inline-flex;
+      align-items:center;
+      gap: 10px;
+      padding: 12px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.16);
+      background: rgba(255,255,255,0.06);
+      color: #f1f5f9;
+      font-weight: 900;
+      text-decoration:none;
+    }
+
+    .btn-yellow{
+      display:inline-flex;
+      align-items:center;
+      gap: 10px;
+      padding: 12px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: linear-gradient(90deg, #facc15, #f59e0b);
+      color: #0b0d10;
+      font-weight: 950;
+      text-decoration:none;
+      box-shadow: 0 14px 36px rgba(0,0,0,0.35);
+    }
+
+    .tags{
+      display:flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style:none;
+    }
+    .tag{
+      padding: 9px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(10,12,16,0.28);
+      color: rgba(226,232,240,0.9);
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    /* Quick links card */
+    .ql-inner{
+      padding: 26px;
+    }
+
+    .ql-title{
+      margin: 0 0 14px;
+      font-size: 16px;
+      font-weight: 950;
+      color: #f8fafc;
+      letter-spacing: .2px;
+    }
+
+    .ql-list{
+      display:flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .ql-item{
+      display:flex;
+      flex-direction: column;
+      gap: 6px;
+      padding: 16px 16px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.04);
+      text-decoration:none;
+      color: #e2e8f0;
+      transition: .18s ease;
+    }
+    .ql-item:hover{
+      transform: translateY(-1px);
+      border-color: rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.06);
+    }
+
+    .ql-item strong{
+      font-size: 16px;
+      font-weight: 950;
+      letter-spacing: .1px;
+      color: #f8fafc;
+    }
+    .ql-item span{
+      font-size: 13.5px;
+      color: rgba(148,163,184,0.95);
+      line-height: 1.35;
+      word-break: break-word;
+    }
+
+    /* =========================
+       SECTION HEADERS
+    ========================== */
+    h1.section-title{
+      font-size: clamp(34px, 3.6vw, 48px);
+      margin: 0 0 10px;
+      font-weight: 950;
+      letter-spacing: -0.3px;
+    }
+
+    p.section-sub{
       color: var(--muted);
-      margin: 0 0 34px;
-      max-width: 640px;
+      margin: 0 0 26px;
+      max-width: 720px;
       line-height: 1.55;
     }
 
-    /* PHOTOGRAPHY GRID */
+    /* =========================
+       PHOTOGRAPHY GRID
+    ========================== */
     .gallery-grid{
       display:grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -112,7 +369,6 @@
       display:block;
     }
 
-    /* CAPTION under each photo card */
     .caption{
       padding: 14px 16px 16px;
       border-top: 1px solid rgba(255,255,255,0.08);
@@ -122,7 +378,7 @@
     .caption h3{
       margin: 0 0 6px;
       font-size: 20px;
-      font-weight: 900;
+      font-weight: 950;
       letter-spacing: .1px;
       color: #f8fafc;
     }
@@ -133,7 +389,9 @@
       color: var(--muted);
     }
 
-    /* LIGHTBOX */
+    /* =========================
+       LIGHTBOX
+    ========================== */
     .lightbox{
       position: fixed;
       inset: 0;
@@ -171,7 +429,7 @@
 
     .lightbox-title{
       font-size: 18px;
-      font-weight: 900;
+      font-weight: 950;
       margin: 0;
       color: #f8fafc;
       letter-spacing: .2px;
@@ -183,7 +441,7 @@
       color: #f8fafc;
       padding: 8px 12px;
       border-radius: 999px;
-      font-weight: 800;
+      font-weight: 900;
       cursor: pointer;
       line-height: 1;
     }
@@ -210,7 +468,9 @@
       font-size: 14px;
     }
 
-    /* VIDEOGRAPHY */
+    /* =========================
+       VIDEOGRAPHY
+    ========================== */
     .videography{ margin-top: 90px; }
 
     .video-grid{
@@ -270,143 +530,189 @@
 <body>
 <div class="container" id="top">
 
-  <div class="topbar">
-    <div class="brand">Gen Production</div>
-    <a href="./index.html#top" class="btn">← Back to Home</a>
-  </div>
+  <!-- NAVBAR (like screenshot) -->
+  <header class="nav">
+    <div class="brand">
+      <span class="brand-dot" aria-hidden="true"></span>
+      Gen Production
+    </div>
 
-  <h1>Photography</h1>
-  <p>A curated selection of visual storytelling and moments.</p>
+   
+
+   <div class="nav-actions">
+  <a class="btn-ghost" href="./index.html#top">← Back to Home</a>
+</div>
+
+  </header>
+
+  <!-- HERO + QUICK LINKS (this is what you showed) -->
+  <section class="hero-grid" aria-label="Hero">
+    <!-- LEFT HERO CARD -->
+    <div class="card hero-card">
+      <div class="hero-inner">
+        <div class="pill">
+          <span class="dot" aria-hidden="true"></span>
+          Sydney, Australia • Available for projects
+        </div>
+
+        <h1 class="hero-title">Film Editing •<br/>Photography •<br/>Videography</h1>
+
+        <p class="hero-desc">
+          Creating emotionally-driven films, cinematic videos, and striking photography focused on visual storytelling,
+          pacing, and mood.
+        </p>
+
+        <div class="hero-actions">
+          <!-- Replace these with your real links -->
+          <a class="btn-yellow" href="https://www.youtube.com/" target="_blank" rel="noopener">▶ Watch Showreel</a>
+          <a class="btn-soft" href="https://www.instagram.com/genp.roduction/" target="_blank" rel="noopener">📷 Instagram</a>
+          <a class="btn-soft" href="tel:+61433963533">📞 Call</a>
+        </div>
+
+        <ul class="tags">
+          <li class="tag">Cinematic pacing</li>
+          <li class="tag">Colour grading</li>
+          <li class="tag">Sound design</li>
+          <li class="tag">Story-first edits</li>
+          <li class="tag">Portrait & lifestyle</li>
+        </ul>
+      </div>
+    </div>
+
+     </section>
 
   <!-- PHOTOGRAPHY -->
-  <div class="gallery-grid">
+  <section id="photo">
+    <h1 class="section-title">Photography</h1>
+    <p class="section-sub">A curated selection of visual storytelling and moments.</p>
 
-    <div class="shot">
-      <div class="thumb">
-        <img class="lightbox-img" src="images/Sydney_Cathedral.jpg" alt="Sydney Cathedral">
+    <div class="gallery-grid">
+      <div class="shot">
+        <div class="thumb">
+          <img class="lightbox-img" src="images/Sydney_Cathedral.jpg" alt="Sydney Cathedral">
+        </div>
+        <div class="caption">
+          <h3>Sydney Cathedral</h3>
+          <p class="meta">Architecture • Light • Mood</p>
+        </div>
       </div>
-      <div class="caption">
-        <h3>Sydney Cathedral</h3>
-        <p class="meta">Architecture • Light • Mood</p>
+
+      <div class="shot">
+        <div class="thumb">
+          <img class="lightbox-img" src="images/Sydney_Bird.jpg" alt="Sydney Bird">
+        </div>
+        <div class="caption">
+          <h3>Sydney Bird</h3>
+          <p class="meta">Nature • Detail • Timing</p>
+        </div>
+      </div>
+
+      <div class="shot">
+        <div class="thumb">
+          <img class="lightbox-img" src="images/tree.jpg" alt="A Solid Foundation">
+        </div>
+        <div class="caption">
+          <h3>A Solid Foundation</h3>
+          <p class="meta">Texture • Calm • Contrast</p>
+        </div>
+      </div>
+
+      <div class="shot">
+        <div class="thumb">
+          <img class="lightbox-img" src="images/Habour_bridge.jpg" alt="Harbour Bridge">
+        </div>
+        <div class="caption">
+          <h3>Harbour Bridge</h3>
+          <p class="meta">Iconic • Lines • Energy</p>
+        </div>
+      </div>
+
+      <div class="shot">
+        <div class="thumb">
+          <img class="lightbox-img" src="images/flower.jpg" alt="Bloom Study">
+        </div>
+        <div class="caption">
+          <h3>Bloom Study</h3>
+          <p class="meta">Color • Soft Light • Detail</p>
+        </div>
+      </div>
+
+      <div class="shot">
+        <div class="thumb">
+          <img class="lightbox-img" src="images/home.jpg" alt="Home Stillness">
+        </div>
+        <div class="caption">
+          <h3>Home Stillness</h3>
+          <p class="meta">Warmth • Story • Quiet</p>
+        </div>
+      </div>
+
+      <div class="shot">
+        <div class="thumb">
+          <img class="lightbox-img" src="images/DSC00547.jpg" alt="Crushed Reality">
+        </div>
+        <div class="caption">
+          <h3>Crushed Reality</h3>
+          <p class="meta">Dream of speed crushed by mountain of reality</p>
+        </div>
+      </div>
+
+      <div class="shot">
+        <div class="thumb">
+          <img class="lightbox-img" src="images/DSC01612.jpg" alt="Wide Eyes">
+        </div>
+        <div class="caption">
+          <h3>Wide Eyes</h3>
+          <p class="meta">Alert mind, wide eyes</p>
+        </div>
+      </div>
+
+      <div class="shot">
+        <div class="thumb">
+          <img class="lightbox-img" src="images/DSC01819.jpg" alt="Standing Strong">
+        </div>
+        <div class="caption">
+          <h3>Standing Strong</h3>
+          <p class="meta">Standing strong over centuries</p>
+        </div>
+      </div>
+
+      <div class="shot">
+        <div class="thumb">
+          <img class="lightbox-img" src="images/DSC02293 (1).jpg" alt="Feel the Breeze">
+        </div>
+        <div class="caption">
+          <h3>Feel the Breeze</h3>
+          <p class="meta">Ruling the Australian trees, tough on breeze</p>
+        </div>
+      </div>
+
+      <div class="shot">
+        <div class="thumb">
+          <img class="lightbox-img" src="images/DSC02117.jpg" alt="Lights and Color">
+        </div>
+        <div class="caption">
+          <h3>Lights and Color</h3>
+          <p class="meta">Lights and color throughout the year</p>
+        </div>
+      </div>
+
+      <div class="shot">
+        <div class="thumb">
+          <img class="lightbox-img" src="images/DSC01316.jpg" alt="History">
+        </div>
+        <div class="caption">
+          <h3>History</h3>
+          <p class="meta">History as it is.</p>
+        </div>
       </div>
     </div>
-
-    <div class="shot">
-      <div class="thumb">
-        <img class="lightbox-img" src="images/Sydney_Bird.jpg" alt="Sydney Bird">
-      </div>
-      <div class="caption">
-        <h3>Sydney Bird</h3>
-        <p class="meta">Nature • Detail • Timing</p>
-      </div>
-    </div>
-
-    <div class="shot">
-      <div class="thumb">
-        <img class="lightbox-img" src="images/tree.jpg" alt="A Solid Foundation">
-      </div>
-      <div class="caption">
-        <h3>A Solid Foundation</h3>
-        <p class="meta">Texture • Calm • Contrast</p>
-      </div>
-    </div>
-
-    <div class="shot">
-      <div class="thumb">
-        <img class="lightbox-img" src="images/Habour_bridge.jpg" alt="Harbour Bridge">
-      </div>
-      <div class="caption">
-        <h3>Harbour Bridge</h3>
-        <p class="meta">Iconic • Lines • Energy</p>
-      </div>
-    </div>
-
-    <div class="shot">
-      <div class="thumb">
-        <img class="lightbox-img" src="images/flower.jpg" alt="Bloom Study">
-      </div>
-      <div class="caption">
-        <h3>Bloom Study</h3>
-        <p class="meta">Color • Soft Light • Detail</p>
-      </div>
-    </div>
-
-    <div class="shot">
-      <div class="thumb">
-        <img class="lightbox-img" src="images/home.jpg" alt="Home Stillness">
-      </div>
-      <div class="caption">
-        <h3>Home Stillness</h3>
-        <p class="meta">Warmth • Story • Quiet</p>
-      </div>
-    </div>
-
-    <div class="shot">
-      <div class="thumb">
-        <img class="lightbox-img" src="images/DSC00547.jpg" alt="Crushed Reality">
-      </div>
-      <div class="caption">
-        <h3>Crushed Reality</h3>
-        <p class="meta">Dream of speed crushed by mountain of reality</p>
-      </div>
-    </div>
-
-    <div class="shot">
-      <div class="thumb">
-        <img class="lightbox-img" src="images/DSC01612.jpg" alt="Wide Eyes">
-      </div>
-      <div class="caption">
-        <h3>Wide Eyes</h3>
-        <p class="meta">Alert mind, wide eyes</p>
-      </div>
-    </div>
-
-    <div class="shot">
-      <div class="thumb">
-        <img class="lightbox-img" src="images/DSC01819.jpg" alt="Standing Strong">
-      </div>
-      <div class="caption">
-        <h3>Standing Strong</h3>
-        <p class="meta">Standing strong over centuries</p>
-      </div>
-    </div>
-
-    <div class="shot">
-      <div class="thumb">
-        <img class="lightbox-img" src="images/DSC02293 (1).jpg" alt="Feel the Breeze">
-      </div>
-      <div class="caption">
-        <h3>Feel the Breeze</h3>
-        <p class="meta">Ruling the Australian trees, tough on breeze</p>
-      </div>
-    </div>
-
-    <div class="shot">
-      <div class="thumb">
-        <img class="lightbox-img" src="images/DSC02117.jpg" alt="Lights and Color">
-      </div>
-      <div class="caption">
-        <h3>Lights and Color</h3>
-        <p class="meta">Lights and color throughout the year</p>
-      </div>
-    </div>
-
-    <div class="shot">
-      <div class="thumb">
-        <img class="lightbox-img" src="images/DSC01316.jpg" alt="History">
-      </div>
-      <div class="caption">
-        <h3>History</h3>
-        <p class="meta">History as it is.</p>
-      </div>
-    </div>
-
-  </div><!-- ✅ CLOSE gallery-grid properly -->
+  </section>
 
   <!-- VIDEOGRAPHY -->
-  <section class="videography">
-    <h1>Videography</h1>
-    <p>Cinematic storytelling through motion and emotion.</p>
+  <section class="videography" id="video">
+    <h1 class="section-title">Videography</h1>
+    <p class="section-sub">Cinematic storytelling through motion and emotion.</p>
 
     <div class="video-grid">
       <div class="video-card">
@@ -447,7 +753,6 @@
       <img id="lightboxImage" alt="">
     </div>
 
-    <!-- ✅ FOOTER INSIDE THE CARD -->
     <div class="lightbox-foot" id="lightboxDesc">Photo description</div>
   </div>
 </div>
@@ -498,6 +803,4 @@
 
 </body>
 </html>
-
-
 
