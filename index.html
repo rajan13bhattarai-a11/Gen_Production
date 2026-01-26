@@ -7,9 +7,9 @@
   <meta name="description" content="Sydney-based Film Editor, Photographer, and Videographer. Portfolio of cinematic storytelling and visual work." />
 
   <style>
-    /* ===== RESET & CROPPING FIX ===== */
+    /* ===== RESET ===== */
     * { box-sizing: border-box; }
-    html, body {
+    html, body{
       margin: 0;
       padding: 0;
       width: 100%;
@@ -20,25 +20,20 @@
       color: #f1f5f9;
       line-height: 1.6;
     }
-    img { max-width: 100%; display: block; }
-    a { color: inherit; text-decoration: none; }
-    a:focus { outline: 2px solid rgba(250, 204, 21, 0.7); outline-offset: 3px; border-radius: 10px; }
+    img{ max-width: 100%; display: block; }
+    a{ color: inherit; text-decoration: none; }
+    a:focus{ outline: 2px solid rgba(250, 204, 21, 0.7); outline-offset: 3px; border-radius: 10px; }
 
     :root{
-      --bg: #0b0d10;
-      --panel: rgba(255,255,255,0.05);
-      --panel2: rgba(255,255,255,0.07);
       --line: rgba(255,255,255,0.12);
       --muted: #94a3b8;
-      --muted2: #cbd5f5;
-      --accent: #facc15;
       --radius: 22px;
       --shadow: 0 18px 48px rgba(0,0,0,.45);
       --max: 1200px;
     }
 
     /* ===== LAYOUT ===== */
-    .container {
+    .container{
       max-width: var(--max);
       margin: 0 auto;
       padding: 36px 18px 70px;
@@ -46,7 +41,7 @@
     }
 
     /* ===== TOP NAV ===== */
-    .nav {
+    .nav{
       position: sticky;
       top: 0;
       z-index: 50;
@@ -54,7 +49,7 @@
       background: rgba(11, 13, 16, 0.72);
       border-bottom: 1px solid var(--line);
     }
-    .nav-inner {
+    .nav-inner{
       max-width: var(--max);
       margin: 0 auto;
       padding: 12px 18px;
@@ -63,27 +58,29 @@
       justify-content: space-between;
       gap: 12px;
     }
-    .brand {
+    .brand{
       display: flex;
       align-items: center;
       gap: 10px;
       font-weight: 800;
       letter-spacing: 0.2px;
     }
-    .logo {
+    .logo{
       width: 34px; height: 34px;
       border-radius: 12px;
       background: linear-gradient(135deg, rgba(250,204,21,.95), rgba(147,197,253,.75));
       box-shadow: 0 12px 30px rgba(0,0,0,.35);
       flex: 0 0 auto;
     }
-    .nav-links {
+
+    .nav-links{
       display: flex;
       gap: 8px;
       flex-wrap: wrap;
       justify-content: center;
+      align-items: center;
     }
-    .nav-links a {
+    .nav-links a{
       font-size: 14px;
       color: rgba(241,245,249,.75);
       padding: 8px 12px;
@@ -91,14 +88,18 @@
       border: 1px solid transparent;
       transition: background .15s ease, border-color .15s ease, color .15s ease;
     }
-    .nav-links a:hover {
+    .nav-links a:hover{
       background: rgba(255,255,255,0.04);
       border-color: var(--line);
       color: #fff;
     }
 
+    @media (max-width: 980px){
+      .nav-links{ display: none; }
+    }
+
     /* ===== BUTTONS ===== */
-    .btn {
+    .btn{
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -114,183 +115,111 @@
       transition: transform .12s ease, background .12s ease, border-color .12s ease;
       white-space: nowrap;
     }
-    .btn:hover {
+    .btn:hover{
       transform: translateY(-1px);
       background: rgba(255,255,255,0.07);
       border-color: rgba(255,255,255,0.18);
     }
-    .btn-primary {
+    .btn-primary{
       border: none;
       background: linear-gradient(135deg, rgba(250,204,21,1), rgba(147,197,253,.95));
       color: #0b0d10;
       font-weight: 800;
     }
 
-    /* ===== HERO ===== */
-    .hero {
-      margin-top: 18px;
-      display: grid;
-      grid-template-columns: 1.35fr 1fr;
-      gap: 18px;
-      align-items: stretch;
-      width: 100%;
-    }
-    @media (max-width: 980px) {
-      .hero { grid-template-columns: 1fr; }
-      .nav-links { display: none; }
-    }
-
-    .hero-left, .hero-right {
-      border-radius: var(--radius);
-      border: 1px solid var(--line);
-      box-shadow: var(--shadow);
-      overflow: hidden;
-      min-width: 0;
-    }
-
-    .hero-left {
-      padding: 46px;
-      background:
-        radial-gradient(700px 320px at 10% 10%, rgba(147,197,253,.18), transparent 60%),
-        radial-gradient(700px 320px at 90% 10%, rgba(250,204,21,.14), transparent 60%),
-        linear-gradient(180deg, rgba(30,41,59,.72), rgba(2,6,23,.92));
-    }
-    @media (max-width: 520px) { .hero-left { padding: 28px; } }
-
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 9px 14px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.10);
-      font-size: 13px;
-      color: rgba(241,245,249,.86);
-      margin-bottom: 22px;
-    }
-    .badge-dot {
-      width: 8px; height: 8px; border-radius: 50%;
-      background: rgba(147,197,253,.95);
-      box-shadow: 0 0 0 6px rgba(147,197,253,.12);
-    }
-
-    h1 {
-      font-size: clamp(34px, 4.5vw, 54px);
-      line-height: 1.08;
-      margin: 0 0 14px;
-      letter-spacing: -0.6px;
-    }
-    .subtitle {
-      font-weight: 500;
-      font-size: 16px;
-      color: var(--muted2);
-      margin: 0 0 18px;
-    }
-    .tagline {
-      color: var(--muted);
-      max-width: 62ch;
-      margin: 0;
-      font-size: 16px;
-    }
-    .buttons {
-      margin-top: 26px;
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-    /* Center contact buttons */
-    #contact .buttons { justify-content: center; }
-
-    .quick-skills {
-      margin-top: 18px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-    .pill {
-      padding: 7px 12px;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.04);
-      color: rgba(241,245,249,.78);
-      font-size: 12.5px;
-    }
-
-    /* ===== RIGHT CARD ===== */
-    .hero-right {
-      padding: 26px;
-      background: rgba(255,255,255,0.04);
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    .right-title {
-      font-size: 14px;
-      color: rgba(241,245,249,.85);
-      font-weight: 800;
-      letter-spacing: 0.2px;
-      margin: 2px 0 6px;
-    }
-
-    .link-card {
-      padding: 16px 16px;
-      border-radius: 18px;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.10);
-      transition: transform .12s ease, background .12s ease, border-color .12s ease;
-    }
-    .link-card:hover {
-      transform: translateY(-1px);
-      background: rgba(255,255,255,0.07);
-      border-color: rgba(255,255,255,0.16);
-    }
-    .link-card strong { display: block; }
-    .link-card span { color: var(--muted); font-size: 13px; }
-
-    /* ===== ABOUT LAYOUT ===== */
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1.4fr 1fr;
-      gap: 40px;
-      align-items: center;
-    }
-    .about-image {
-      border-radius: 22px;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.12);
-      box-shadow: 0 18px 48px rgba(0,0,0,.45);
-    }
-    .about-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    @media (max-width: 900px) {
-      .about-grid { grid-template-columns: 1fr; }
-    }
-
-    .section { margin-top: 70px; }
-    .section h3 {
+    /* ===== SECTIONS ===== */
+    .section{ margin-top: 70px; }
+    .section h3{
       font-size: 26px;
       margin: 0 0 10px;
       letter-spacing: -0.2px;
       text-align: center;
     }
-    .section p.lead {
+    .section p.lead{
       margin: 0 0 24px;
       color: var(--muted);
       max-width: 80ch;
     }
 
-    /* Contact section: make description full width */
-    #contact p.lead {
-      max-width: 100%;
+    /* ===== ABOUT ===== */
+    .about-grid{
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+    .about-image{
+      border-radius: 22px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: var(--shadow);
+    }
+    .about-image img{
       width: 100%;
-      text-align: center;
+      height: 100%;
+      object-fit: cover;
+    }
+    @media (max-width: 900px){
+      .about-grid{ grid-template-columns: 1fr; }
     }
 
-    /* ===== OUR SERVICES ===== */
+    /* ===== QUICK LINKS (NEW) ===== */
+    .quicklinks-wrap{
+      display: flex;
+      justify-content: flex-start;   /* left side */
+      margin-top: 26px;
+      margin-bottom: 26px;
+    }
+    .quicklinks-card{
+      width: min(520px, 100%);
+      border-radius: 26px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.04);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.35);
+      padding: 24px;
+    }
+    .quicklinks-title{
+      margin: 0 0 16px;
+      font-size: 16px;
+      font-weight: 950;
+      color: #f8fafc;
+      letter-spacing: .2px;
+    }
+    .quicklinks-list{
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .quicklinks-item{
+      padding: 18px 18px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.10);
+      transition: transform .12s ease, background .12s ease, border-color .12s ease;
+      display: block;
+    }
+    .quicklinks-item:hover{
+      transform: translateY(-1px);
+      background: rgba(255,255,255,0.07);
+      border-color: rgba(255,255,255,0.16);
+    }
+    .quicklinks-item strong{
+      display: block;
+      font-size: 18px;
+      font-weight: 950;
+      color: #f8fafc;
+      margin-bottom: 6px;
+    }
+    .quicklinks-item span{
+      display: block;
+      color: rgba(148,163,184,0.95);
+      font-size: 14px;
+      line-height: 1.35;
+      word-break: break-word;
+    }
+
+    /* ===== SERVICES ===== */
     .services-grid{
       margin-top: 26px;
       display: grid;
@@ -316,19 +245,17 @@
       background: rgba(255,255,255,0.06);
     }
     .service-card img{
-  width: 100%;
-  height: 320px;
-  object-fit: cover;
-  display: block;
-  filter: brightness(0.92) contrast(1.05);
-  transition: transform .4s ease, filter .4s ease;
-}
-
-.service-card:hover img{
-  transform: scale(1.05);
-  filter: brightness(1) contrast(1.1);
-}
-
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      display: block;
+      filter: brightness(0.92) contrast(1.05);
+      transition: transform .4s ease, filter .4s ease;
+    }
+    .service-card:hover img{
+      transform: scale(1.05);
+      filter: brightness(1) contrast(1.1);
+    }
     @media (max-width: 620px){
       .service-card img{ height: 260px; }
     }
@@ -347,24 +274,36 @@
       font-size: 13.5px;
     }
 
+    /* ===== CONTACT ===== */
+    #contact p.lead{
+      max-width: 100%;
+      width: 100%;
+      text-align: center;
+    }
+    #contact .buttons{ justify-content: center; }
+    .buttons{
+      margin-top: 20px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
     /* ===== SERVICES MODAL ===== */
-    .svc-heading {
+    .svc-heading{
       padding: 16px;
       text-align: center;
       border-bottom: 1px solid rgba(255,255,255,0.10);
     }
-    .svc-heading h4 {
+    .svc-heading h4{
       margin: 0;
       font-size: 20px;
       font-weight: 900;
       letter-spacing: -0.2px;
     }
-
-    .svc-caption {
+    .svc-caption{
       padding: 14px 16px 16px;
       border-top: 1px solid rgba(255,255,255,0.10);
     }
-
     .svc-modal{
       position: fixed;
       inset: 0;
@@ -372,7 +311,6 @@
       z-index: 999;
     }
     .svc-modal.is-open{ display: block; }
-
     .svc-backdrop{
       position: absolute;
       inset: 0;
@@ -390,9 +328,9 @@
     }
     .svc-media{
       background: #0b0d10;
+      position: relative;
+      z-index: 1;
     }
-
-    /* Image in modal */
     .svc-media img{
       width: 100%;
       height: auto;
@@ -400,24 +338,24 @@
       object-fit: contain;
       display: block;
       background: #0b0d10;
+      position: relative;
+      z-index: 1;
     }
-
-    /* ✅ Video in modal (added) */
     .svc-media video{
       width: 100%;
       height: auto;
       max-height: 72vh;
       display: block;
       background: #0b0d10;
+      position: relative;
+      z-index: 1;
     }
-
     .svc-caption p{
       margin: 0;
       color: rgba(241,245,249,.78);
       font-size: 14px;
       line-height: 1.6;
     }
-
     .svc-close{
       position: absolute;
       top: 10px;
@@ -432,8 +370,8 @@
       cursor: pointer;
       display: grid;
       place-items: center;
+      z-index: 60;
     }
-
     .svc-arrow{
       position: absolute;
       top: 50%;
@@ -449,33 +387,18 @@
       display: grid;
       place-items: center;
       user-select: none;
+      z-index: 60;
+      pointer-events: auto;
     }
     .svc-prev{ left: 10px; }
     .svc-next{ right: 10px; }
-    /* ===== FIX: keep arrows above video so clicks work ===== */
-.svc-dialog { position: relative; }
-
-.svc-arrow{
-  z-index: 50;          /* higher than the video */
-  pointer-events: auto; /* make sure it's clickable */
-}
-
-/* keep video below arrows */
-.svc-media { position: relative; z-index: 1; }
-.svc-media video,
-.svc-media img{
-  position: relative;
-  z-index: 1;
-}
-
-
     @media (max-width: 620px){
       .svc-dialog{ margin: 4vh auto; }
       .svc-arrow{ width: 44px; height: 44px; }
     }
 
     /* ===== FOOTER ===== */
-    footer {
+    footer{
       margin-top: 70px;
       padding: 28px 18px;
       text-align: center;
@@ -496,22 +419,19 @@
         <span>Gen Production</span>
       </a>
 
+      <!-- ✅ Contact only -->
       <div class="nav-links">
-        <a href="#work">Work</a>
-        <a href="#gallery">Photography</a>
         <a href="#contact">Contact</a>
       </div>
 
-      <a class="btn btn-primary" href="portfolio.html">
-        📷 Portfolio
-      </a>
+      <!-- ✅ Keep Portfolio button -->
+      <a class="btn btn-primary" href="portfolio.html">📷 Portfolio</a>
     </div>
   </div>
 
   <div class="container">
 
-
-       <!-- BIO -->
+    <!-- BIO -->
     <section class="section" id="bio">
       <h3>About Us</h3>
 
@@ -526,8 +446,6 @@
             Driven by creativity and precision, we work closely with brands, artists, and individuals to bring ideas to life from concept to final cut.
             Whether it’s a short film, commercial, or digital content, Gen Production is committed to delivering authentic stories with a strong visual identity.
           </p>
-
-          <p class="lead"></p>
         </div>
 
         <div class="about-image">
@@ -541,9 +459,8 @@
       <h3>Our Services</h3>
 
       <div class="services-grid">
-        <!-- Card 1 -->
-        <div class="service-card js-service" data-service="photo"
-             role="button" tabindex="0" aria-label="Open Professional Photography Services">
+        <div class="service-card js-service" data-service="photo" role="button" tabindex="0"
+             aria-label="Open Professional Photography Services">
           <img src="images/reflection.jpg" alt="Professional Photography Services" loading="lazy">
           <div class="service-body">
             <p class="service-title">Professional Photography Services</p>
@@ -553,9 +470,8 @@
           </div>
         </div>
 
-        <!-- Card 2 -->
-        <div class="service-card js-service" data-service="social"
-             role="button" tabindex="0" aria-label="Open Social Media Promotion">
+        <div class="service-card js-service" data-service="social" role="button" tabindex="0"
+             aria-label="Open Social Media Promotion">
           <img src="images/hello.png" alt="Social Media Campaigns" loading="lazy">
           <div class="service-body">
             <p class="service-title">Social Media Promotion</p>
@@ -565,9 +481,8 @@
           </div>
         </div>
 
-        <!-- Card 3 -->
-        <div class="service-card js-service" data-service="video"
-             role="button" tabindex="0" aria-label="Open Video Production">
+        <div class="service-card js-service" data-service="video" role="button" tabindex="0"
+             aria-label="Open Video Production">
           <img src="images/service-video.jpg" alt="Video Production" loading="lazy">
           <div class="service-body">
             <p class="service-title">Video Production</p>
@@ -579,10 +494,45 @@
       </div>
     </section>
 
+    <!-- ✅ QUICK LINKS (NEW) -->
+    <section class="section" id="quicklinks">
+      <h3 style="text-align:left;">Quick links</h3>
+
+      <div class="quicklinks-wrap">
+        <div class="quicklinks-card" aria-label="Quick links card">
+          <div class="quicklinks-list">
+            <a class="quicklinks-item" href="https://www.youtube.com/@GenProduction-e8c" target="_blank" rel="noreferrer">
+              <strong>YouTube — Gen Production</strong>
+              <span>Films, edits & videography</span>
+            </a>
+
+            <a class="quicklinks-item" href="https://www.instagram.com/genp.roduction" target="_blank" rel="noreferrer">
+              <strong>Instagram — genp.roduction</strong>
+              <span>Photography & behind-the-scenes</span>
+            </a>
+
+            <a class="quicklinks-item" href="mailto:rajan13bhattarai@gmail.com?subject=Portfolio%20enquiry">
+              <strong>Email</strong>
+              <span>rajan13bhattarai@gmail.com</span>
+            </a>
+
+            <a class="quicklinks-item" href="tel:+61433963533">
+              <strong>Phone</strong>
+              <span>+61 433 963 533</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- CONTACT -->
     <section class="section" id="contact">
       <h3>Contact Us</h3>
-      <p class="lead">Have a project in mind or need creative visual services? Gen Production is here to help bring your ideas to life. Get in touch for photography, videography, or content creation enquiries. We look forward to collaborating and creating visuals that truly represent your story..</p>
+      <p class="lead">
+        Have a project in mind or need creative visual services? Gen Production is here to help bring your ideas to life.
+        Get in touch for photography, videography, or content creation enquiries. We look forward to collaborating and
+        creating visuals that truly represent your story.
+      </p>
 
       <div class="buttons">
         <a class="btn btn-primary" href="mailto:rajan13bhattarai@gmail.com?subject=Portfolio%20enquiry">📧 Email</a>
@@ -594,8 +544,7 @@
   </div>
 
   <footer>
-    <b>©</b> 2025 Gen Production
-    Sydney, Australia
+    <b>©</b> 2025 Gen Production — Sydney, Australia
   </footer>
 
   <!-- SERVICES MODAL -->
@@ -607,18 +556,15 @@
       <button class="svc-arrow svc-prev" id="svcPrev" aria-label="Previous">‹</button>
       <button class="svc-arrow svc-next" id="svcNext" aria-label="Next">›</button>
 
-      <!-- HEADING (ON TOP) -->
       <div class="svc-heading">
         <h4 id="svcTitle"></h4>
       </div>
 
-      <!-- MEDIA (image or video) -->
       <div class="svc-media" id="svcSwipeArea">
         <img id="svcImg" src="" alt="">
         <video id="svcVideo" controls playsinline style="display:none;"></video>
       </div>
 
-      <!-- DESCRIPTION (BOTTOM) -->
       <div class="svc-caption">
         <p id="svcDesc"></p>
       </div>
@@ -626,7 +572,6 @@
   </div>
 
   <script>
-    // ===== Modal shows slides inside each service =====
     const modal = document.getElementById('svcModal');
     const backdrop = document.getElementById('svcBackdrop');
     const btnClose = document.getElementById('svcClose');
@@ -641,7 +586,6 @@
 
     const serviceCards = Array.from(document.querySelectorAll('.js-service'));
 
-    // ✅ EDIT IMAGE/VIDEO PATHS/TEXT HERE
     const SERVICES = {
       photo: {
         name: "Professional Photography Services",
@@ -662,7 +606,7 @@
         name: "Video Production",
         slides: [
           { heading: "Commercial / Promo", type: "video", src: "Videos/Video.mp4", desc: "High-quality promos with strong storytelling and clean pacing." },
-          { heading: "Events",            type: "video", src: "Videos/Video.mp4",      desc: "Event highlights capturing energy, crowd, and key moments." }
+          { heading: "Events",            type: "video", src: "Videos/Video.mp4", desc: "Event highlights capturing energy, crowd, and key moments." }
         ]
       }
     };
@@ -695,32 +639,25 @@
 
       const slide = slides[slideIndex];
 
-      // Heading + description
       svcTitle.textContent = slide.heading;
       svcDesc.textContent = slide.desc;
 
-      // Media switch (image OR video)
       if (isVideoSlide(slide)) {
-        // Hide image
         svcImg.style.display = "none";
         svcImg.src = "";
         svcImg.alt = "";
 
-        // Show video
         svcVideo.style.display = "block";
         if (svcVideo.src !== slide.src) {
           stopVideo();
           svcVideo.src = slide.src;
           svcVideo.load();
         }
-        // autoplay attempt (browser may block without interaction)
         svcVideo.play().catch(() => {});
       } else {
-        // Stop/hide video
         stopVideo();
         svcVideo.style.display = "none";
 
-        // Show image
         svcImg.style.display = "block";
         svcImg.src = slide.img;
         svcImg.alt = slide.heading;
@@ -755,7 +692,6 @@
     function prevSlide() { slideIndex -= 1; renderSlide(); }
     function nextSlide() { slideIndex += 1; renderSlide(); }
 
-    // Open modal
     serviceCards.forEach((card) => {
       const key = card.dataset.service;
       card.addEventListener('click', () => openModal(key));
@@ -767,13 +703,11 @@
       });
     });
 
-    // Buttons/backdrop
     btnClose.addEventListener('click', closeModal);
     backdrop.addEventListener('click', closeModal);
     btnPrev.addEventListener('click', prevSlide);
     btnNext.addEventListener('click', nextSlide);
 
-    // Keyboard
     document.addEventListener('keydown', (e) => {
       if (!modal.classList.contains('is-open')) return;
       if (e.key === 'Escape') closeModal();
@@ -781,7 +715,6 @@
       if (e.key === 'ArrowRight') nextSlide();
     });
 
-    // Swipe
     let touchStartX = 0;
     let touchEndX = 0;
 
@@ -800,7 +733,3 @@
 
 </body>
 </html>
-
-
-
-
