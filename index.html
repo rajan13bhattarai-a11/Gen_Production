@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gen Production | Film, Photography & Creative Media</title>
+  <meta name="description" content="Gen Production is a Sydney-based creative media brand for film production, photography, video editing, videography and visual storytelling." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header" id="site-header">
+    <a href="#home" class="logo">GEN<span>PRODUCTION</span></a>
+    <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav" id="nav">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section id="home" class="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-noise"></div>
+      <div class="hero-content">
+        <p class="eyebrow reveal-up" style="--d:0ms">Sydney · Creative Media</p>
+        <h1 class="reveal-up" style="--d:120ms">Stories told<br><em>through frames</em><br>and visuals.</h1>
+        <p class="hero-sub reveal-up" style="--d:240ms">Gen Production creates meaningful visual content for short films, brands, events, and creative portfolios.</p>
+      </div>
+      <div class="hero-scroll">
+        <span class="scroll-line"></span>
+        <span class="scroll-label">Scroll</span>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section about-section">
+      <div class="about-text reveal-up">
+        <p class="eyebrow">About Us</p>
+        <h2>Gen Production</h2>
+        <p>Gen Production is a Sydney-based creative production brand focused on authentic visual narratives. We partner with brands, artists, and individuals to develop work that holds attention from concept to final cut.</p>
+        <p>Driven by creativity and precision, we work closely with brands, artists, and individuals to bring ideas to life from concept to final cut. Whether it’s a short film, commercial, or digital content, Gen Production is committed to delivering authentic stories with a strong visual identity.</p>
+      </div>
+      <div class="about-sidebar reveal-up" style="--d:150ms">
+        <div class="sidebar-card sidebar-card-logo">
+          <img src="assets/logo.png" alt="Gen Production" class="sidebar-logo-full" />
+        </div>
+        <div class="sidebar-stat">
+          <span class="stat-number">Sydney</span>
+          <span class="stat-label">Based &amp; Available Worldwide</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- PORTFOLIO -->
+    <section id="portfolio" class="section portfolio-section">
+      <div class="section-heading reveal-up">
+        <p class="eyebrow">Portfolio</p>
+        <h2>Featured Work</h2>
+      </div>
+      <div class="portfolio-grid">
+        <a href="portfolio/short-film.html" class="work-card large reveal-up" style="--d:0ms">
+          <div class="work-image image-one">
+            <div class="work-overlay">
+              <div class="work-tag">Short Film</div>
+              <div class="work-info">
+                <h3>Short Films</h3>
+                <p>From concept to screen, creating unforgettable cinematic experiences.</p>
+              </div>
+            </div>
+          </div>
+        </a>
+        <a href="portfolio/photography.html" class="work-card reveal-up" style="--d:80ms">
+          <div class="work-image image-two">
+            <div class="work-overlay">
+              <div class="work-tag">Photography</div>
+              <div class="work-info">
+                <h3>Cinematic Photography</h3>
+                <p>Portrait, travel and lifestyle photography.</p>
+              </div>
+            </div>
+          </div>
+        </a>
+        <a href="portfolio/brand-content.html" class="work-card reveal-up" style="--d:160ms">
+          <div class="work-image image-three">
+            <div class="work-overlay">
+              <div class="work-tag">Brand Content</div>
+              <div class="work-info">
+                <h3>Brand &amp; Social Content</h3>
+                <p>Creative videos for businesses and events.</p>
+              </div>
+            </div>
+          </div>
+        </a>
+        <article class="work-card wide reveal-up" style="--d:240ms" id="videography-card">
+          <div class="work-video">
+            <video
+              id="videography-video"
+              src="assets/VIDEO.mp4"
+              muted
+              loop
+              playsinline
+              preload="metadata"
+            ></video>
+            <button class="work-sound-toggle" id="videography-sound-toggle" aria-label="Unmute video" aria-pressed="false" type="button">
+              <svg class="icon-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+              <svg class="icon-unmuted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 010 7.07"/><path d="M19.07 4.93a10 10 0 010 14.14"/></svg>
+            </button>
+            <a href="portfolio/videography-editing.html" class="work-overlay work-overlay-link">
+              <div class="work-tag">Videography</div>
+              <div class="work-info">
+                <h3>Videography</h3>
+                <p>Cinematic reels for any occasion or event.</p>
+                <span class="work-view-more">View Portfolio →</span>
+              </div>
+            </a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" class="section services-section">
+      <div class="section-heading reveal-up">
+        <p class="eyebrow">What We Do</p>
+        <h2>Services</h2>
+      </div>
+      <div class="services-grid">
+        <a href="services/film-production.html" class="service-item reveal-up" style="--d:0ms">
+          <div class="service-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 10l4.553-2.069A1 1 0 0121 8.862v6.276a1 1 0 01-1.447.894L15 14M3 8a2 2 0 012-2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z"/></svg>
+          </div>
+          <h3>Film Production</h3>
+          <p>Short films, creative concepts, directing, cinematography and full production planning from pre to post.</p>
+          <span class="service-arrow">Learn more →</span>
+        </a>
+        <a href="services/photography.html" class="service-item reveal-up" style="--d:80ms">
+          <div class="service-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M20.188 10.934l-1.67-2.89a2 2 0 00-1.73-1.007H7.212a2 2 0 00-1.73 1.007l-1.67 2.89A4 4 0 004 12.967V17a2 2 0 002 2h12a2 2 0 002-2v-4.033a4 4 0 00-.812-2.033z"/></svg>
+          </div>
+          <h3>Photography</h3>
+          <p>Portrait, event, travel, nature and professional portfolio photography with a cinematic perspective.</p>
+          <span class="service-arrow">Learn more →</span>
+        </a>
+        <a href="services/videography-editing.html" class="service-item reveal-up" style="--d:160ms">
+          <div class="service-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          </div>
+          <h3>Videography &amp; Editing</h3>
+          <p>Shooting cinematic visuals, editing, sound design, colour grading and polished final video delivery.</p>
+          <span class="service-arrow">Learn more →</span>
+        </a>
+        <a href="services/brand-content.html" class="service-item reveal-up" style="--d:240ms">
+          <div class="service-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+          </div>
+          <h3>Brand Content</h3>
+          <p>Cinematic reels and films for brand events, social media campaigns and creative projects.</p>
+          <span class="service-arrow">Learn more →</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- SHOWREEL -->
+    <section class="showreel-section">
+      <div class="showreel-inner">
+        <div class="showreel-header reveal-up">
+          <p class="eyebrow">Showreel</p>
+          <h2>Glimps of Our Work</h2>
+        </div>
+        <div class="showreel-frame reveal-up" style="--d:100ms" id="showreel-frame">
+          <iframe
+            id="showreel-iframe"
+            width="100%"
+            height="100%"
+            src="https://www.youtube.com/embed/3K1MIFTAaUM?enablejsapi=1&controls=1&rel=0&modestbranding=1&vq=hd1080&hd=1&autoplay=1&mute=1&playsinline=1"
+            title="Gen Production Showreel"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen>
+          </iframe>
+          <button class="work-sound-toggle showreel-sound-toggle" id="showreel-sound-toggle" aria-label="Unmute video" aria-pressed="false" type="button">
+            <svg class="icon-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+            <svg class="icon-unmuted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 010 7.07"/><path d="M19.07 4.93a10 10 0 010 14.14"/></svg>
+          </button>
+        </div>
+        <div class="showreel-cta reveal-up" style="--d:200ms">
+          <a class="btn primary" href="#contact">Start a Project</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section contact-section">
+      <div class="contact-left reveal-up">
+        <p class="eyebrow">Contact</p>
+        <h2>Let's create<br>something<br><em>meaningful.</em></h2>
+        <p>Ready to bring your vision to life? Reach out and we'll talk through what you need.</p>
+        <div class="contact-links">
+          <a href="mailto:rajan13bhattarai@gmail.com" class="contact-link">
+            <span class="contact-link-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </span>
+            rajan13bhattarai@gmail.com
+          </a>
+          <a href="tel:+61433963533" class="contact-link">
+            <span class="contact-link-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+            </span>
+            +61 433 963 533
+          </a>
+          <a href="https://www.instagram.com/genp.roduction" target="_blank" rel="noopener" class="contact-link">
+            <span class="contact-link-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </span>
+            @genp.roduction
+          </a>
+        </div>
+      </div>
+      <div class="contact-right reveal-up" style="--d:150ms">
+        <form class="contact-form" id="contact-form" action="https://formspree.io/f/xykqzwaq" method="POST" novalidate>
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Your full name" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="your@email.com" required />
+          </div>
+          <div class="form-group">
+            <label for="service">Service</label>
+            <select id="service" name="service">
+              <option value="">Select a service</option>
+              <option value="film">Film Production</option>
+              <option value="photography">Photography</option>
+              <option value="editing">Video Editing</option>
+              <option value="videography">Videography</option>
+              <option value="other">Other Project</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Tell us about your project…" required></textarea>
+          </div>
+          <button class="btn primary full-width" type="submit">Send Message</button>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <a href="#home" class="footer-logo">GEN<span>PRODUCTION</span></a>
+      <p class="footer-copy">© 2026 Gen Production. All rights reserved. Sydney, Australia.</p>
+    </div>
+  </footer>
+
+  <script src="assets/script.js"></script>
+</body>
+</html>
