@@ -306,3 +306,38 @@ sections.forEach(s => sectionObserver.observe(s));
     if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
   });
 })();
+
+// --- AUTOMATIC PHOTOGRAPHY GALLERY LAYOUT ---
+// You can now add photos using only:
+// <div class="pf-gallery-item reveal-up" style="background-image:url('../images/photo-name.jpg')"></div>
+// The script will automatically repeat this layout:
+// A: normal, normal, wide
+// B: wide, normal, normal
+// C: normal, wide, normal
+(function () {
+  const galleries = document.querySelectorAll('.pf-gallery');
+  if (!galleries.length) return;
+
+  galleries.forEach(gallery => {
+    const items = Array.from(gallery.querySelectorAll('.pf-gallery-item'));
+
+    items.forEach((item, index) => {
+      // Remove old/manual size classes so the repeated pattern controls everything.
+      item.classList.remove('span-2', 'pf-wide');
+
+      const patternPosition = index % 9;
+
+      // Wide photos repeat at positions 3, 4, and 8 in every 9-photo cycle.
+      // This creates A → B → C → repeat:
+      // A: □ □ ▬▬
+      // B: ▬▬ □ □
+      // C: □ ▬▬ □
+      if ([2, 3, 7].includes(patternPosition)) {
+        item.classList.add('pf-wide');
+      }
+
+      // Automatic reveal delay, so you do not need to write --d manually.
+      item.style.setProperty('--d', `${(index % 9) * 80}ms`);
+    });
+  });
+})();
