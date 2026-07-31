@@ -516,13 +516,13 @@ p {
 }
 .showreel-header { margin-bottom: 36px; }
 .showreel-frame {
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
+  width: 100%;
   aspect-ratio: 16 / 9;
   border-radius: 4px;
   overflow: hidden;
   border: 1px solid var(--edge);
   position: relative;
+}
 }
 }
 .showreel-frame iframe { width: 100%; height: 100%; }
